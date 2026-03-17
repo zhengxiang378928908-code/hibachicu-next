@@ -13,7 +13,7 @@ export default function Footer() {
               alt="Hibachi CU"
               width={107}
               height={52}
-              className="mb-4"
+              className="mb-4 rounded-lg shadow-[0_0_12px_rgba(251,143,44,0.25)]"
             />
             <p className="text-white/60 text-[14px] leading-[1.8]">
               Mobile Hibachi Catering & Private Hibachi Chef at Home.

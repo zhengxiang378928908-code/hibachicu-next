@@ -21,13 +21,14 @@ export default function Header() {
       className="fixed top-0 left-0 w-full z-50"
     >
       <div className="max-w-[1200px] mx-auto px-5 flex items-center justify-between h-[80px]">
-        <Link href="/">
+        <Link href="/" className="block rounded-lg overflow-hidden shadow-[0_0_12px_rgba(251,143,44,0.25)]">
           <Image
             src="/images/logo.png"
             alt="Hibachi CU"
             width={107}
             height={52}
             priority
+            className="rounded-lg"
           />
         </Link>
 
