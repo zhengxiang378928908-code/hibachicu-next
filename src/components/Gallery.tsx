@@ -20,20 +20,20 @@ export default function Gallery() {
     { src: "/images/gallery11.jpg", alt: "Hibachi event 11" },
   ];
 
-  // TODO: 把这里替换成你自己的视频链接（支持 YouTube / 本地 mp4）
   const videos = [
-    {
-      // 示例：YouTube 嵌入链接
-      type: "youtube" as const,
-      src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      title: "Hibachi Fire Show",
-    },
-    {
-      // 示例：本地 mp4 文件（放到 public/videos/ 目录下）
-      type: "mp4" as const,
-      src: "/videos/hibachi-demo.mp4",
-      title: "Hibachi Party Highlights",
-    },
+    { src: "/videos/60_1767297804.mp4", title: "Hibachi Grill Show" },
+    { src: "/videos/61_1767297827.mp4", title: "Live Cooking" },
+    { src: "/videos/62_1767297847.mp4", title: "Fire Performance" },
+    { src: "/videos/63_1767297857.mp4", title: "Chef in Action" },
+    { src: "/videos/64_1767297875.mp4", title: "Backyard Party" },
+    { src: "/videos/67_1767297908.mp4", title: "Hibachi Experience" },
+    { src: "/videos/68_1767297918.mp4", title: "Grill Highlights" },
+    { src: "/videos/69_1767297925.mp4", title: "Flame Show" },
+    { src: "/videos/71_1767297938.mp4", title: "Party Moments" },
+    { src: "/videos/72_1767297956.mp4", title: "Chef Performance" },
+    { src: "/videos/73_1767297969.mp4", title: "Hibachi Fun" },
+    { src: "/videos/83_1767318121.mp4", title: "Private Event" },
+    { src: "/videos/85_1767318146.mp4", title: "Outdoor Hibachi" },
   ];
 
   return (
@@ -94,33 +94,21 @@ export default function Gallery() {
 
         {/* Videos Grid */}
         {activeTab === "videos" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {videos.map((video, i) => (
               <div
                 key={i}
-                className="relative aspect-video overflow-hidden rounded-lg bg-[#15213a]/40"
+                className="relative aspect-[9/16] overflow-hidden rounded-lg bg-[#15213a]/40"
               >
-                {video.type === "youtube" ? (
-                  <iframe
-                    src={video.src}
-                    title={video.title}
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                ) : (
-                  <video
-                    src={video.src}
-                    controls
-                    className="w-full h-full object-cover"
-                    playsInline
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                )}
-                <p className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-center py-2 text-[14px]">
-                  {video.title}
-                </p>
+                <video
+                  src={video.src}
+                  controls
+                  preload="metadata"
+                  className="w-full h-full object-cover"
+                  playsInline
+                >
+                  Your browser does not support the video tag.
+                </video>
               </div>
             ))}
           </div>
