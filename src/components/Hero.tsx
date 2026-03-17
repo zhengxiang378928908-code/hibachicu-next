@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Hero() {
   return (
     <section
@@ -9,15 +7,17 @@ export default function Hero() {
         background: "linear-gradient(135deg, #0b1214 0%, #15213a 50%, #0e1c21 100%)",
       }}
     >
-      {/* Background image overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/gallery1.jpg"
-          alt="Hibachi background"
-          fill
-          className="object-cover opacity-20"
-          priority
-        />
+      {/* Background video */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-30"
+        >
+          <source src="/videos/68_1767297918.mp4" type="video/mp4" />
+        </video>
       </div>
 
       <div className="relative z-10 max-w-[900px] mx-auto px-5">
