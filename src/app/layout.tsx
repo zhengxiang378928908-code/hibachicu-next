@@ -4,6 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Hibachi CU - Mobile Hibachi Catering & Private Hibachi Chef at Home",
   description: "Mobile Hibachi Catering & Private Hibachi Chef at Home. Private Chef · Live Fire Show · Perfect for Parties, Backyards & Vacation Rentals.",
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
