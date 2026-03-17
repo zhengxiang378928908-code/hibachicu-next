@@ -33,7 +33,7 @@ export default function Contact() {
           Ready to book your hibachi experience? Fill out the form below or give us a call!
         </p>
         <p className="text-center text-[#fb8f2c] text-[22px] font-semibold mb-10">
-          <a href="tel:6462093047">(646) 209-3047</a>
+          <a href="tel:6462093470">(646) 209-3470</a>
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">

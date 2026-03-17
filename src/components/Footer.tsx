@@ -54,14 +54,14 @@ export default function Footer() {
             <ul className="space-y-3 text-white/60 text-[15px]">
               <li className="flex items-center gap-2">
                 <span className="text-[#fb8f2c]">📞</span>
-                <a href="tel:6462093047" className="hover:text-[#fb8f2c] transition-colors">
-                  (646) 209-3047
+                <a href="tel:6462093470" className="hover:text-[#fb8f2c] transition-colors">
+                  (646) 209-3470
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-[#fb8f2c]">📧</span>
-                <a href="mailto:info@hibachicu.com" className="hover:text-[#fb8f2c] transition-colors">
-                  info@hibachicu.com
+                <a href="mailto:www.hibachicu@gmail.com" className="hover:text-[#fb8f2c] transition-colors">
+                  www.hibachicu@gmail.com
                 </a>
               </li>
             </ul>
