@@ -7,17 +7,17 @@ export default function Gallery() {
   const [activeTab, setActiveTab] = useState<"photos" | "videos">("photos");
 
   const images = [
-    { src: "/images/gallery1.jpg", alt: "Hibachi event 1" },
-    { src: "/images/gallery2.jpg", alt: "Hibachi event 2" },
-    { src: "/images/gallery3.jpg", alt: "Hibachi event 3" },
-    { src: "/images/gallery4.jpg", alt: "Hibachi event 4" },
-    { src: "/images/gallery5.jpg", alt: "Hibachi event 5" },
-    { src: "/images/gallery6.jpg", alt: "Hibachi event 6" },
-    { src: "/images/gallery7.jpg", alt: "Hibachi event 7" },
-    { src: "/images/gallery8.jpg", alt: "Hibachi event 8" },
-    { src: "/images/gallery9.jpg", alt: "Hibachi event 9" },
-    { src: "/images/gallery10.jpg", alt: "Hibachi event 10" },
-    { src: "/images/gallery11.jpg", alt: "Hibachi event 11" },
+    { src: "/images/gallery1.jpg", alt: "mobile hibachi chef performing at a private event" },
+    { src: "/images/gallery2.jpg", alt: "hibachi catering guests seated around the grill at home" },
+    { src: "/images/gallery3.jpg", alt: "outdoor hibachi dinner setup for a backyard party" },
+    { src: "/images/gallery4.jpg", alt: "family photo at a backyard hibachi catering event" },
+    { src: "/images/gallery5.jpg", alt: "fried rice cooking on an outdoor hibachi grill" },
+    { src: "/images/gallery6.jpg", alt: "guest enjoying a private hibachi chef experience outdoors" },
+    { src: "/images/gallery7.jpg", alt: "group celebration during a mobile hibachi party" },
+    { src: "/images/gallery8.jpg", alt: "backyard hibachi setup with grill cart and guests" },
+    { src: "/images/gallery9.jpg", alt: "indoor hibachi catering setup with guests at the table" },
+    { src: "/images/gallery10.jpg", alt: "birthday hibachi party with fried rice cooking on the grill" },
+    { src: "/images/gallery11.jpg", alt: "outdoor birthday hibachi celebration in a backyard" },
   ];
 
   const videos = [

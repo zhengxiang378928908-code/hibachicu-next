@@ -1,10 +1,50 @@
 import type { Metadata } from "next";
+
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Hibachi CU - Mobile Hibachi Catering & Private Hibachi Chef at Home",
-  description: "Mobile Hibachi Catering & Private Hibachi Chef at Home. Private Chef · Live Fire Show · Perfect for Parties, Backyards & Vacation Rentals.",
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: `${siteConfig.name} | ${siteConfig.title}`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
   manifest: "/manifest.json",
+  keywords: [
+    "mobile hibachi catering",
+    "private hibachi chef",
+    "hibachi at home",
+    "backyard hibachi party",
+    "hibachi catering",
+    "private chef catering",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} | ${siteConfig.title}`,
+    description: siteConfig.description,
+    url: "/",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | ${siteConfig.title}`,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
 };
 
 export default function RootLayout({

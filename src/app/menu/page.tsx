@@ -1,38 +1,46 @@
+import type { Metadata } from "next";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { menuStates } from "@/lib/menu-states";
+import { siteConfig } from "@/lib/site";
 
-const states = [
-  {
-    region: "New England",
-    locations: [
-      { name: "Connecticut", href: "/connecticut-hibachi-menu" },
-      { name: "Massachusetts", href: "/connecticut-hibachi-menu" },
-      { name: "Rhode Island", href: "/connecticut-hibachi-menu" },
-      { name: "Vermont", href: "/connecticut-hibachi-menu" },
-      { name: "New Hampshire", href: "/connecticut-hibachi-menu" },
+export const metadata: Metadata = {
+  title: "Hibachi Menus & Pricing by State",
+  description:
+    "Browse hibachi catering menus and starting pricing by state. Explore private hibachi chef service areas for Connecticut, Massachusetts, New York, Florida, and more.",
+  alternates: {
+    canonical: "/menu",
+  },
+  openGraph: {
+    title: "Hibachi Menus & Pricing by State | Hibachi CU",
+    description:
+      "Browse hibachi catering menus and starting pricing by state for private hibachi chef events, backyard parties, and vacation rentals.",
+    url: "/menu",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Hibachi menus and pricing by state",
+      },
     ],
   },
-  {
-    region: "Mid-Atlantic",
-    locations: [
-      { name: "New York", href: "/connecticut-hibachi-menu" },
-      { name: "New Jersey", href: "/connecticut-hibachi-menu" },
-      { name: "Pennsylvania", href: "/connecticut-hibachi-menu" },
-      { name: "Delaware", href: "/connecticut-hibachi-menu" },
-      { name: "Maryland", href: "/connecticut-hibachi-menu" },
-      { name: "Washington D.C.", href: "/connecticut-hibachi-menu" },
-    ],
+  twitter: {
+    card: "summary_large_image",
+    title: "Hibachi Menus & Pricing by State | Hibachi CU",
+    description:
+      "Browse hibachi catering menus and starting pricing by state for private hibachi chef events, backyard parties, and vacation rentals.",
+    images: [siteConfig.ogImage],
   },
-  {
-    region: "Southeast",
-    locations: [
-      { name: "Florida — Miami", href: "/connecticut-hibachi-menu" },
-      { name: "Florida — Orlando", href: "/connecticut-hibachi-menu" },
-      { name: "Florida — Tampa", href: "/connecticut-hibachi-menu" },
-    ],
-  },
-];
+};
+
+const statesByRegion = menuStates.reduce<Record<string, typeof menuStates>>((groups, state) => {
+  groups[state.region] ??= [];
+  groups[state.region].push(state);
+  return groups;
+}, {});
 
 export default function MenuPage() {
   return (
@@ -59,16 +67,16 @@ export default function MenuPage() {
         {/* State Listings */}
         <section className="py-20 px-5" style={{ background: "var(--color-dark-bg-alt)" }}>
           <div className="max-w-[1000px] mx-auto">
-            {states.map((group) => (
-              <div key={group.region} className="mb-14">
+            {Object.entries(statesByRegion).map(([region, locations]) => (
+              <div key={region} className="mb-14">
                 <h2 className="text-[32px] text-white mb-8 pb-3 border-b border-white/10">
-                  {group.region}
+                  {region}
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {group.locations.map((loc) => (
+                  {locations.map((loc) => (
                     <Link
                       key={loc.name}
-                      href={loc.href}
+                      href={`/menu/${loc.slug}`}
                       className="flex items-center gap-3 bg-[#15213a]/50 rounded-lg px-6 py-5 hover:bg-[#15213a] transition-all duration-300 hover:-translate-y-0.5 group"
                     >
                       <span className="text-[#fb8f2c] text-xl">📍</span>
@@ -88,10 +96,10 @@ export default function MenuPage() {
         <section className="py-14 px-5 text-center" style={{ background: "var(--color-dark-bg)" }}>
           <p className="text-white/60 text-[16px] mb-2">Service Hours: Daily 11:00 AM – 10:30 PM</p>
           <p className="text-[#fb8f2c] text-[24px] font-semibold mb-6">
-            <a href="tel:9292062056">(929) 206-2056</a>
+            <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
           </p>
           <a
-            href="https://app.acuityscheduling.com/schedule/f65e453b/appointment/88159880/calendar/13406740?appointmentTypeIds%5B%5D=88159880"
+            href={siteConfig.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"

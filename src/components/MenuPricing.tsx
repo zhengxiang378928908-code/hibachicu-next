@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function MenuPricing() {
   return (
     <section id="menu" className="py-20 px-5" style={{ background: "var(--color-dark-bg)" }}>
@@ -55,17 +57,17 @@ export default function MenuPricing() {
           </div>
         </div>
 
-        <a href="/connecticut-hibachi-menu" className="btn-primary">
+        <Link href="/menu/connecticut" className="btn-primary">
           Get a Menu & Price Quote
-        </a>
+        </Link>
 
         <div className="mt-6">
-          <a
+          <Link
             href="/menu"
             className="inline-block text-[#fb8f2c] text-[17px] font-semibold hover:underline transition-all"
           >
             View Full Hibachi Menu →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

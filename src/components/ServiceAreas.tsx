@@ -1,21 +1,9 @@
+import Link from "next/link";
 import Image from "next/image";
+import { menuStates } from "@/lib/menu-states";
+import { siteConfig } from "@/lib/site";
 
 export default function ServiceAreas() {
-  const areas = [
-    "Pennsylvania",
-    "New York",
-    "Vermont",
-    "New Hampshire",
-    "Massachusetts",
-    "Connecticut",
-    "Rhode Island",
-    "New Jersey",
-    "Delaware",
-    "Maryland",
-    "Washington D.C.",
-    "Florida — Miami, Orlando, Tampa, West Palm Beach",
-  ];
-
   return (
     <section
       id="areas"
@@ -43,20 +31,24 @@ export default function ServiceAreas() {
           <div>
             <h3 className="text-[28px] text-white mb-6">We Come to You!</h3>
             <p className="text-white/70 mb-6 leading-[1.8]">
-              Hibachi CU provides mobile hibachi catering services across multiple states.
-              Check if we serve your area:
+              Hibachi CU provides mobile hibachi catering services across multiple states. Explore
+              menu pricing and service details for your area below:
             </p>
             <div className="grid grid-cols-2 gap-3">
-              {areas.map((area) => (
-                <div key={area} className="flex items-center gap-2 text-white/85">
+              {menuStates.map((state) => (
+                <Link
+                  key={state.slug}
+                  href={`/menu/${state.slug}`}
+                  className="flex items-center gap-2 rounded-lg border border-white/10 bg-[#15213a]/40 px-4 py-3 text-white/85 transition-colors duration-300 hover:border-[#fb8f2c]/40 hover:text-white"
+                >
                   <span className="text-[#fb8f2c]">📍</span>
-                  <span className="text-[15px]">{area}</span>
-                </div>
+                  <span className="text-[15px]">{state.name}</span>
+                </Link>
               ))}
             </div>
 
             <div className="mt-8">
-              <a href="https://app.acuityscheduling.com/schedule/f65e453b/appointment/88159880/calendar/13406740?appointmentTypeIds%5B%5D=88159880" target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <a href={siteConfig.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
                 BOOK ONLINE NOW
               </a>
             </div>

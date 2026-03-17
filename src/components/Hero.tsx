@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/site";
+
 export default function Hero() {
   return (
     <section
@@ -22,12 +24,12 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-[900px] mx-auto px-5">
         <h1 className="text-[64px] md:text-[80px] text-white mb-4 leading-[1.1]">
-          hibachi <span className="text-[#fb8f2c]">CU</span>
+          Mobile <span className="text-[#fb8f2c]">Hibachi Catering</span>
         </h1>
 
-        <h2 className="text-[24px] md:text-[32px] text-white/90 mb-6 font-normal">
-          Mobile Hibachi Catering & Private Hibachi Chef at Home
-        </h2>
+        <p className="text-[24px] md:text-[32px] text-white/90 mb-6 font-normal">
+          Private Hibachi Chef at Home from Hibachi CU
+        </p>
 
         <p className="text-[18px] text-white/70 mb-4">
           Private Chef · Live Fire Show · Perfect for Parties, Backyards & Vacation Rentals
@@ -37,7 +39,7 @@ export default function Hero() {
           Whenever, Wherever · Ignite the Night!
         </p>
 
-        <a href="https://app.acuityscheduling.com/schedule/f65e453b/appointment/88159880/calendar/13406740?appointmentTypeIds%5B%5D=88159880" target="_blank" rel="noopener noreferrer" className="btn-primary text-[20px] px-12 py-5">
+        <a href={siteConfig.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn-primary text-[20px] px-12 py-5">
           BOOK NOW
         </a>
 
