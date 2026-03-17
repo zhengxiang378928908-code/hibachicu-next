@@ -4,47 +4,6 @@ import Image from "next/image";
 
 const proteins = ["Chicken", "Shrimp", "Steak", "Salmon", "Tofu & Veggies"];
 
-const sushiPlatters = [
-  {
-    name: "Maki Platter A",
-    price: "$110",
-    pieces: "51 pcs",
-    items: [
-      "California Roll (12 pcs)",
-      "Shrimp Tempura Roll (5 pcs)",
-      "Eel Cucumber Roll (6 pcs)",
-      "Tuna Avocado Roll (6 pcs)",
-      "Salmon Avocado Roll (6 pcs)",
-      "Pink Lady Special Roll (8 pcs)",
-      "Volcano Special Roll (8 pcs)",
-    ],
-  },
-  {
-    name: "Spicy Maki Platter B",
-    price: "$110",
-    pieces: "52 pcs",
-    items: [
-      "Spicy California Roll (12 pcs)",
-      "Spicy Kani Roll (12 pcs)",
-      "Spicy Tuna Roll (12 pcs)",
-      "Spicy Salmon Roll (6 pcs)",
-      "Phoenix Special Roll (8 pcs)",
-      "Green Dragon Special Roll (8 pcs)",
-    ],
-  },
-  {
-    name: "Vegetable Platter C",
-    price: "$70",
-    pieces: "48 pcs",
-    items: [
-      "Vegetable Roll (12 pcs)",
-      "Avocado Roll (12 pcs)",
-      "Cucumber Roll (12 pcs)",
-      "Sweet Potato Roll (12 pcs)",
-    ],
-  },
-];
-
 const appetizers = [
   { name: "Edamame", price: "$8" },
   { name: "Veg Gyoza (6 pcs)", price: "$10" },
@@ -73,7 +32,6 @@ export default function ConnecticutMenuPage() {
                 { src: "/images/menu-gyoza.webp", alt: "Hibachi Gyoza" },
                 { src: "/images/menu-shumai.webp", alt: "Hibachi Shumai" },
                 { src: "/images/menu-combination.webp", alt: "Hibachi Combination" },
-                { src: "/images/menu-sushi.webp", alt: "Sushi Platters" },
               ].map((img, i) => (
                 <div key={i} className="relative aspect-square rounded-lg overflow-hidden">
                   <Image
@@ -155,41 +113,6 @@ export default function ConnecticutMenuPage() {
           </div>
         </section>
 
-        {/* Sushi Platters */}
-        <section className="py-20 px-5" style={{ background: "var(--color-dark-bg)" }}>
-          <div className="max-w-[1100px] mx-auto">
-            <h2 className="text-[40px] text-white text-center mb-4">
-              Sushi <span className="text-[#fb8f2c]">Platters</span>
-            </h2>
-            <p className="text-center text-white/50 text-[15px] mb-14">Add-on options — not included in base dinner</p>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {sushiPlatters.map((platter) => (
-                <div
-                  key={platter.name}
-                  className="bg-[#15213a]/50 rounded-xl p-8 border border-white/5 hover:border-[#fb8f2c]/30 transition-all duration-300"
-                >
-                  <h3 className="text-[22px] text-white mb-2">{platter.name}</h3>
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[#fb8f2c] text-[28px] font-bold font-['Libre_Baskerville',serif]">
-                      {platter.price}
-                    </span>
-                    <span className="text-white/40 text-[14px]">{platter.pieces}</span>
-                  </div>
-                  <ul className="space-y-2">
-                    {platter.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-white/70 text-[14px]">
-                        <span className="text-[#fb8f2c] mt-0.5">◆</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Appetizers */}
         <section className="py-20 px-5" style={{ background: "var(--color-dark-bg-alt)" }}>
           <div className="max-w-[700px] mx-auto">
@@ -223,12 +146,6 @@ export default function ConnecticutMenuPage() {
                 <p className="text-white/65 text-[15px] leading-[1.8]">
                   Vegetarian options available (including tofu and veggies), and we can accommodate
                   many allergy-friendly and gluten-free requests.
-                </p>
-              </div>
-              <div className="bg-[#15213a]/40 rounded-lg p-6">
-                <h3 className="text-[18px] text-white mb-3">Are sushi platters included?</h3>
-                <p className="text-white/65 text-[15px] leading-[1.8]">
-                  Sushi platters are typically offered as an add-on and are not included in the base dinner.
                 </p>
               </div>
             </div>
