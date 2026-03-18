@@ -114,7 +114,7 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
               communities.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 {
                   src: "/images/menu-hibachi-table-1.png",
@@ -131,6 +131,11 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
                   alt: `${state.name} hibachi fried rice and grill setup outdoors`,
                   position: "center 70%",
                 },
+                {
+                  src: "/images/gallery8.jpg",
+                  alt: `${state.name} backyard hibachi grill with food and guests`,
+                  position: "center center",
+                },
               ].map((img) => (
                 <div key={img.alt} className="relative aspect-square rounded-lg overflow-hidden">
                   <Image
@@ -139,7 +144,7 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
                     fill
                     className="object-cover"
                     style={{ objectPosition: img.position }}
-                    sizes="(max-width: 768px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 </div>
               ))}
