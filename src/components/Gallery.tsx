@@ -37,34 +37,34 @@ export default function Gallery() {
   ];
 
   return (
-    <section id="gallery" className="py-20 px-5" style={{ background: "var(--color-dark-bg)" }}>
-      <div className="max-w-[1200px] mx-auto">
-        <h2 className="text-[44px] text-white text-center mb-6">
-          Photos & <span className="text-[#fb8f2c]">Videos</span>
+    <section id="gallery" className="py-24" style={{ background: "var(--color-surface)" }}>
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center mb-4">
+          Our Culinary Gallery
         </h2>
 
-        <p className="text-center text-white/60 mb-10">
-          Browse real hibachi party photos and videos
+        <p className="text-center text-[#ddc1b0] mb-12 text-lg">
+          Where the fire, the products, and the memories live.
         </p>
 
-        {/* Tabs */}
-        <div className="flex justify-center gap-2 mb-12">
+        {/* Tabs - Glass Chips */}
+        <div className="flex justify-center gap-3 mb-12">
           <button
             onClick={() => setActiveTab("photos")}
-            className={`px-8 py-3 rounded-full text-[16px] font-semibold transition-all duration-300 ${
+            className={`px-8 py-3 rounded-full text-sm font-bold tracking-widest transition-all duration-300 ${
               activeTab === "photos"
-                ? "bg-[#fb8f2c] text-white"
-                : "bg-[#15213a]/60 text-white/60 hover:text-white"
+                ? "bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400]"
+                : "bg-[#29344e]/40 backdrop-blur-sm text-[#ddc1b0] hover:text-[#ffb786] hover:bg-[#29344e]/70"
             }`}
           >
             PHOTOS
           </button>
           <button
             onClick={() => setActiveTab("videos")}
-            className={`px-8 py-3 rounded-full text-[16px] font-semibold transition-all duration-300 ${
+            className={`px-8 py-3 rounded-full text-sm font-bold tracking-widest transition-all duration-300 ${
               activeTab === "videos"
-                ? "bg-[#fb8f2c] text-white"
-                : "bg-[#15213a]/60 text-white/60 hover:text-white"
+                ? "bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400]"
+                : "bg-[#29344e]/40 backdrop-blur-sm text-[#ddc1b0] hover:text-[#ffb786] hover:bg-[#29344e]/70"
             }`}
           >
             VIDEOS
@@ -98,7 +98,7 @@ export default function Gallery() {
             {videos.map((video, i) => (
               <div
                 key={i}
-                className="relative aspect-[9/16] overflow-hidden rounded-lg bg-[#15213a]/40"
+                className="relative aspect-[9/16] overflow-hidden rounded-lg bg-[#131f38]"
               >
                 <video
                   src={video.src}

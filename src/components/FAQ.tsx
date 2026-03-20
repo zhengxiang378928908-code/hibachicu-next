@@ -2,26 +2,26 @@ import { faqs } from "@/lib/faqs";
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-20 px-5" style={{ background: "var(--color-dark-bg)" }}>
-      <div className="max-w-[800px] mx-auto">
-        <h2 className="text-[44px] text-white text-center mb-14">
-          Frequently Asked <span className="text-[#fb8f2c]">Questions</span>
+    <section id="faq" className="py-24" style={{ background: "var(--color-surface)" }}>
+      <div className="max-w-3xl mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center mb-16">
+          Frequently Asked Questions
         </h2>
 
         <div className="space-y-4">
           {faqs.map((faq) => (
             <details
               key={faq.q}
-              className="border border-white/10 rounded-lg overflow-hidden bg-[#15213a]/20 group"
+              className="rounded-lg overflow-hidden bg-[#131f38] group"
             >
-              <summary className="flex items-center justify-between px-6 py-5 text-left bg-[#15213a]/40 hover:bg-[#15213a]/70 transition-colors cursor-pointer">
-                <span className="text-white text-[17px] font-medium pr-4">{faq.q}</span>
-                <span className="text-[#fb8f2c] text-2xl flex-shrink-0 group-open:rotate-45 transition-transform">
-                  +
+              <summary className="flex items-center justify-between px-6 py-5 text-left hover:bg-[#1e2a43] transition-colors cursor-pointer">
+                <span className="text-[15px] font-medium pr-4">{faq.q}</span>
+                <span className="material-symbols-outlined text-[#ffb786] text-xl flex-shrink-0 group-open:rotate-180 transition-transform duration-300">
+                  expand_more
                 </span>
               </summary>
-              <div className="px-6 py-5 bg-[#15213a]/20">
-                <p className="text-white/75 text-[15px] leading-[1.8]">{faq.a}</p>
+              <div className="px-6 pb-6">
+                <p className="text-[#ddc1b0] text-sm leading-relaxed">{faq.a}</p>
               </div>
             </details>
           ))}

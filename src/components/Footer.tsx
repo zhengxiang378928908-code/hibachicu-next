@@ -4,9 +4,9 @@ import { siteConfig } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer style={{ background: "var(--color-header-bg)" }}>
-      <div className="max-w-[1200px] mx-auto px-5 py-14">
-        <div className="grid md:grid-cols-3 gap-10">
+    <footer style={{ background: "var(--color-surface-container)" }}>
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
             <Image
@@ -14,20 +14,19 @@ export default function Footer() {
               alt="Hibachi CU"
               width={107}
               height={52}
-              className="mb-4 rounded-lg shadow-[0_0_12px_rgba(251,143,44,0.25)]"
+              className="mb-4 rounded-lg shadow-[0_0_12px_rgba(245,130,32,0.25)]"
             />
-            <p className="text-white/60 text-[14px] leading-[1.8]">
-              Mobile Hibachi Catering & Private Hibachi Chef at Home.
-              We bring the grill, fresh ingredients, and full setup — you just enjoy the show!
+            <p className="text-[#ddc1b0]/60 text-sm leading-relaxed">
+              The premier private hibachi experience — luxury catering, incredible entertainment, chef-quality cuisine.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white text-[18px] mb-5 font-['Libre_Baskerville',serif]">
-              Quick Links
+            <h4 className="text-[#ffb786] font-bold tracking-widest text-xs mb-6">
+              QUICK LINKS
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {[
                 { label: "Home", href: "/" },
                 { label: "Locations & Menu", href: "/menu" },
@@ -38,7 +37,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-white/60 text-[15px] hover:text-[#fb8f2c] transition-colors"
+                    className="text-[#ddc1b0]/60 text-sm hover:text-[#ffb786] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -47,32 +46,42 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Support */}
           <div>
-            <h4 className="text-white text-[18px] mb-5 font-['Libre_Baskerville',serif]">
-              Contact Us
+            <h4 className="text-[#ffb786] font-bold tracking-widest text-xs mb-6">
+              SUPPORT
             </h4>
-            <ul className="space-y-3 text-white/60 text-[15px]">
-              <li className="flex items-center gap-2">
-                <span className="text-[#fb8f2c]">📞</span>
-                <a href={siteConfig.phoneHref} className="hover:text-[#fb8f2c] transition-colors">
+            <ul className="space-y-3 text-[#ddc1b0]/60 text-sm">
+              <li>
+                <a href={siteConfig.phoneHref} className="hover:text-[#ffb786] transition-colors flex items-center gap-2">
+                  <span className="material-symbols-outlined text-sm">call</span>
                   {siteConfig.phoneDisplay}
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-[#fb8f2c]">📧</span>
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-[#fb8f2c] transition-colors">
+              <li>
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-[#ffb786] transition-colors flex items-center gap-2">
+                  <span className="material-symbols-outlined text-sm">mail</span>
                   {siteConfig.email}
                 </a>
               </li>
             </ul>
           </div>
+
+          {/* Follow Us */}
+          <div>
+            <h4 className="text-[#ffb786] font-bold tracking-widest text-xs mb-6">
+              FOLLOW US
+            </h4>
+            <p className="text-[#ddc1b0]/60 text-sm leading-relaxed">
+              Stay connected for the latest events, behind-the-scenes content, and special offers.
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-[1200px] mx-auto px-5 py-5 flex flex-col md:flex-row justify-between items-center text-white/40 text-[13px]">
+      <div className="border-t border-[#29344e]/50">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center text-[#ddc1b0]/40 text-xs">
           <p>&copy; {new Date().getFullYear()} Hibachi CU. All rights reserved.</p>
         </div>
       </div>

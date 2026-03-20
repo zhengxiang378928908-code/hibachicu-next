@@ -7,15 +7,48 @@ export default function ServiceAreas() {
   return (
     <section
       id="areas"
-      className="py-20 px-5"
-      style={{ background: "var(--color-dark-bg-alt)" }}
+      className="py-24"
+      style={{ background: "var(--color-surface-container-low)" }}
     >
-      <div className="max-w-[1200px] mx-auto">
-        <h2 className="text-[44px] text-white text-center mb-14">
-          Service <span className="text-[#fb8f2c]">Areas</span>
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center mb-4">
+          Where We Bring the Fire
         </h2>
+        <p className="text-center text-[#ddc1b0] mb-16 text-lg">
+          We are rapidly expanding across the Eastern Seaboard. If you&rsquo;re in these states, we&rsquo;re ready to serve you!
+        </p>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* States Grid */}
+          <div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {menuStates.map((state) => (
+                <Link
+                  key={state.slug}
+                  href={`/menu/${state.slug}`}
+                  className="flex items-center justify-center gap-2 rounded-lg bg-[#131f38] px-4 py-3 text-sm font-medium transition-all duration-300 hover:bg-[#1e2a43] hover:text-[#ffb786]"
+                >
+                  <span className="text-sm">{state.name}</span>
+                </Link>
+              ))}
+            </div>
+
+            <p className="mt-6 text-[#ddc1b0]/60 text-xs">
+              * Florida Service: Miami, Orlando, and Tampa regions.
+            </p>
+
+            <div className="mt-8">
+              <a
+                href={siteConfig.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                BOOK ONLINE NOW
+              </a>
+            </div>
+          </div>
+
           {/* Map Image */}
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
             <Image
@@ -25,33 +58,6 @@ export default function ServiceAreas() {
               className="object-contain"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-          </div>
-
-          {/* Areas List */}
-          <div>
-            <h3 className="text-[28px] text-white mb-6">We Come to You!</h3>
-            <p className="text-white/70 mb-6 leading-[1.8]">
-              Hibachi CU provides mobile hibachi catering services across multiple states. Explore
-              menu pricing and service details for your area below:
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              {menuStates.map((state) => (
-                <Link
-                  key={state.slug}
-                  href={`/menu/${state.slug}`}
-                  className="flex items-center gap-2 rounded-lg border border-white/10 bg-[#15213a]/40 px-4 py-3 text-white/85 transition-colors duration-300 hover:border-[#fb8f2c]/40 hover:text-white"
-                >
-                  <span className="text-[#fb8f2c]">📍</span>
-                  <span className="text-[15px]">{state.name}</span>
-                </Link>
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <a href={siteConfig.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                BOOK ONLINE NOW
-              </a>
-            </div>
           </div>
         </div>
       </div>

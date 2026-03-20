@@ -1,60 +1,86 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section
       id="about"
-      className="py-20 px-5"
-      style={{ background: "var(--color-dark-bg-alt)" }}
+      className="py-24"
+      style={{ background: "var(--color-surface-container-low)" }}
     >
-      <div className="max-w-[1000px] mx-auto text-center">
-        <h2 className="text-[44px] text-white mb-8">
-          What is <span className="text-[#fb8f2c]">Hibachi CU</span>?
-        </h2>
-
-        <p className="text-white/85 text-[17px] mb-8 leading-[1.8]">
-          Hibachi CU is a mobile hibachi catering service that brings the excitement of
-          teppanyaki-style cooking directly to your backyard, patio, vacation rental, or
-          Airbnb property. Our skilled chefs arrive with everything needed to create an
-          unforgettable dining experience right at your location.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-12 mt-14 text-left">
-          {/* Services Provided */}
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h3 className="text-[28px] text-white mb-6">Services Provided</h3>
-            <ul className="space-y-3">
-              {[
-                "Private hibachi chef",
-                "Portable hibachi grill & cooking setup",
-                "Fresh meats, seafood, vegetables & fried rice",
-                "Live fire show & chef entertainment",
-                "On-site cooking, serving & basic cleanup",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-white/85">
-                  <span className="text-[#fb8f2c] text-xl mt-0.5">✦</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <h2 className="text-4xl font-bold mb-8">
+              What is Hibachi CU?
+            </h2>
+
+            <p className="text-lg text-[#ddc1b0] leading-relaxed mb-12">
+              Hibachi CU is a mobile hibachi catering service that brings the excitement of
+              teppanyaki-style cooking directly to your backyard, patio, vacation rental, or
+              Airbnb property. Our skilled chefs arrive with everything needed to create an
+              unforgettable dining experience right at your location.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="text-[#ffb786] font-bold tracking-widest text-xs mb-6 flex items-center gap-2">
+                  <span className="w-8 h-[1px] bg-[#ffb786]" /> SERVICES PROVIDED
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    "Private hibachi chef",
+                    "Portable hibachi grill & cooking setup",
+                    "Fresh meats, seafood, vegetables & fried rice",
+                    "Live fire show & chef entertainment",
+                    "On-site cooking, serving & basic cleanup",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[#e9c400] text-sm mt-0.5">check_circle</span>
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-[#ffb786] font-bold tracking-widest text-xs mb-6 flex items-center gap-2">
+                  <span className="w-8 h-[1px] bg-[#ffb786]" /> PERFECT FOR
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    "Birthday parties",
+                    "Family gatherings",
+                    "Backyard dinners",
+                    "Airbnb / vacation rentals",
+                    "Bachelor & bachelorette parties",
+                    "Corporate events",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[#e9c400] text-sm mt-0.5">check_circle</span>
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
-          {/* Perfect For */}
-          <div>
-            <h3 className="text-[28px] text-white mb-6">Perfect For</h3>
-            <ul className="space-y-3">
-              {[
-                "Birthday parties",
-                "Family gatherings",
-                "Backyard dinners",
-                "Airbnb / vacation rentals",
-                "Bachelor & bachelorette parties",
-                "Corporate events",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-white/85">
-                  <span className="text-[#fb8f2c] text-xl mt-0.5">✦</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+          {/* Image side */}
+          <div className="relative">
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+              <Image
+                src="/images/gallery1.jpg"
+                alt="Hibachi chef performing at private event"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div className="absolute -bottom-6 -left-6 bg-[#131f38] rounded-lg p-6 max-w-[280px] hidden lg:block">
+              <p className="text-[#ffb786] text-sm italic font-serif">
+                &ldquo;The grill is our stage, and you&rsquo;re in the front row.&rdquo;
+              </p>
+            </div>
           </div>
         </div>
       </div>

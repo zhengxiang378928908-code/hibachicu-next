@@ -1,70 +1,72 @@
 import Link from "next/link";
 
 export default function MenuPricing() {
+  const menuItems = [
+    { name: "Hibachi Chicken", tag: "Signature" },
+    { name: "New York Strip Steak", tag: "Premium" },
+    { name: "Shrimp Hibachi", tag: "Popular" },
+    { name: "Jumbo Shrimp", tag: "Fresh Catch" },
+    { name: "Fresh Atlantic Salmon", tag: "Seasonal" },
+    { name: "Grilled Winter Lobster Tail", tag: "Luxury Upgrade" },
+  ];
+
   return (
-    <section id="menu" className="py-20 px-5" style={{ background: "var(--color-dark-bg)" }}>
-      <div className="max-w-[1000px] mx-auto text-center">
-        <h2 className="text-[44px] text-white mb-8">
-          Menu & <span className="text-[#fb8f2c]">Pricing</span>
+    <section id="menu" className="py-24" style={{ background: "var(--color-surface)" }}>
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center mb-16">
+          Our Menu
         </h2>
 
-        <p className="text-white/80 text-[17px] mb-12 max-w-[700px] mx-auto leading-[1.8]">
-          We offer a variety of fresh, high-quality ingredients cooked teppanyaki-style
-          right in front of you. Transparent per-person pricing with no hidden fees.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-8 text-left mb-12">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
           {/* Menu Items */}
-          <div className="bg-[#15213a]/60 rounded-lg p-8">
-            <h3 className="text-[24px] text-white mb-6">Our Menu</h3>
-            <ul className="space-y-3 text-white/80">
-              {[
-                "Fresh fried rice & vegetables",
-                "Chicken hibachi",
-                "Steak hibachi",
-                "Shrimp hibachi",
-                "Salmon hibachi",
-                "Lobster upgrade available",
-                "Kids plates available",
-                "Vegetarian options available",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="text-[#fb8f2c]">◆</span>
-                  {item}
+          <div className="bg-[#131f38] rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-8">Our Menu</h3>
+            <ul className="space-y-5">
+              {menuItems.map((item) => (
+                <li key={item.name} className="flex items-center justify-between">
+                  <span className="text-sm font-medium">{item.name}</span>
+                  <span className="text-[#e9c400] text-xs font-bold tracking-wider">{item.tag}</span>
                 </li>
               ))}
             </ul>
+            <p className="mt-8 text-[#ddc1b0]/60 text-xs italic">
+              * All entrees served with Fried Rice, Sauteed Vegetables,
+              and Our House Dipping Sauces.
+            </p>
           </div>
 
           {/* Pricing Info */}
-          <div className="bg-[#15213a]/60 rounded-lg p-8">
-            <h3 className="text-[24px] text-white mb-6">Pricing</h3>
-            <ul className="space-y-3 text-white/80">
+          <div className="bg-[#131f38] rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-8">Pricing Details</h3>
+            <ul className="space-y-5">
               {[
-                "Per-person pricing",
-                "Minimum guest count required",
-                "No setup fee",
-                "Travel fee may apply based on location",
-                "Pay after service is complete",
-                "All major payment methods accepted",
+                { icon: "check_circle", text: "Competitive per-person pricing fees." },
+                { icon: "check_circle", text: "Minimum guest count applies (10+ guests)." },
+                { icon: "check_circle", text: "Travel fees may vary based on your area." },
+                { icon: "check_circle", text: "No setup fee." },
+                { icon: "check_circle", text: "Deposit required to secure your date." },
               ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="text-[#fb8f2c]">◆</span>
-                  {item}
+                <li key={item.text} className="flex items-start gap-3">
+                  <span className="material-symbols-outlined text-[#e9c400] text-sm mt-0.5">{item.icon}</span>
+                  <span className="text-sm text-[#ddc1b0]">{item.text}</span>
                 </li>
               ))}
             </ul>
+            <div className="mt-8">
+              <Link
+                href="/menu/connecticut"
+                className="block text-center bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400] font-bold px-6 py-3 rounded-full text-xs tracking-widest hover:shadow-[0_0_20px_rgba(245,130,32,0.4)] transition-all"
+              >
+                GET A MENU & PRICE QUOTE
+              </Link>
+            </div>
           </div>
         </div>
 
-        <Link href="/menu/connecticut" className="btn-primary">
-          Get a Menu & Price Quote
-        </Link>
-
-        <div className="mt-6">
+        <div className="text-center">
           <Link
             href="/menu"
-            className="inline-block text-[#fb8f2c] text-[17px] font-semibold hover:underline transition-all"
+            className="inline-block text-[#ffb786] text-sm font-semibold hover:text-[#f58220] transition-all tracking-wide"
           >
             View Full Hibachi Menu →
           </Link>

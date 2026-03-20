@@ -83,5 +83,27 @@ export function stateMenuStructuredData(state: MenuState) {
       },
       url: absoluteUrl(`/menu/${state.slug}`),
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: `What areas do you serve in ${state.name}?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `We serve ${state.markets.join(", ")}, plus nearby communities throughout ${state.name}.`,
+          },
+        },
+        {
+          "@type": "Question",
+          name: `How much does hibachi catering cost in ${state.name}?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Our standard package starts at $50 per person with a $500 minimum booking. Travel fees may apply based on distance.",
+          },
+        },
+      ],
+    },
   ];
 }

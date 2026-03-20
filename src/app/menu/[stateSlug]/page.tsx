@@ -61,7 +61,7 @@ export async function generateMetadata({
       title,
       description,
       url: path,
-      type: "article",
+      type: "website",
       images: [
         {
           url: siteConfig.ogImage,
@@ -97,22 +97,29 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <Header />
-      <main className="pt-[80px]" style={{ background: "var(--color-dark-bg)" }}>
+      <main className="pt-[72px]" style={{ background: "var(--color-surface)" }}>
+        {/* Hero */}
         <section
-          className="py-16 px-5"
-          style={{ background: "linear-gradient(135deg, #0b1214 0%, #15213a 50%, #0e1c21 100%)" }}
+          className="py-20 px-6"
+          style={{ background: "var(--color-surface-container-low)" }}
         >
-          <div className="max-w-[1100px] mx-auto">
-            <h1 className="text-[42px] md:text-[52px] text-white text-center mb-6">
-              {state.name} <span className="text-[#fb8f2c]">Hibachi Menu</span>
-            </h1>
-            <p className="text-center text-white/75 mb-4 text-[17px]">
-              Private hibachi chef catering for your home, backyard, Airbnb, or vacation rental.
-            </p>
-            <p className="text-center text-white/60 mb-12 text-[16px] max-w-[760px] mx-auto leading-[1.8]">
-              {state.overview} Popular service areas include {state.markets.join(", ")} and nearby
-              communities.
-            </p>
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="inline-block py-1 px-4 rounded-full bg-[#29344e] text-[#ffb786] text-xs font-bold tracking-widest mb-6">
+                {state.name.toUpperCase()} MENU
+              </span>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                {state.name}{" "}
+                <span className="text-[#ffb786] italic">Hibachi Menu</span>
+              </h1>
+              <p className="text-[#ddc1b0] text-lg mb-4">
+                Private hibachi chef catering for your home, backyard, Airbnb, or vacation rental.
+              </p>
+              <p className="text-[#ddc1b0]/70 text-base max-w-3xl mx-auto leading-relaxed">
+                {state.overview} Popular service areas include {state.markets.join(", ")} and nearby
+                communities.
+              </p>
+            </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
@@ -152,23 +159,24 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
           </div>
         </section>
 
-        <section className="py-20 px-5" style={{ background: "var(--color-dark-bg)" }}>
-          <div className="max-w-[1100px] mx-auto">
-            <h2 className="text-[36px] text-white text-center mb-12">
-              Why {state.name} <span className="text-[#fb8f2c]">Events Book Hibachi</span>
+        {/* Why Book */}
+        <section className="py-24 px-6" style={{ background: "var(--color-surface)" }}>
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-14">
+              Why {state.name} Events Book Hibachi
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-[#15213a]/40 rounded-xl p-7 border border-white/5">
-                <h3 className="text-[20px] text-white mb-4">Popular Event Style</h3>
-                <p className="text-white/70 text-[15px] leading-[1.8]">{state.eventFocus}</p>
+              <div className="bg-[#131f38] rounded-lg p-8 hover:bg-[#1e2a43] transition-all">
+                <h3 className="text-lg font-bold mb-4">Popular Event Style</h3>
+                <p className="text-[#ddc1b0] text-sm leading-relaxed">{state.eventFocus}</p>
               </div>
-              <div className="bg-[#15213a]/40 rounded-xl p-7 border border-white/5">
-                <h3 className="text-[20px] text-white mb-4">Local Planning Notes</h3>
-                <p className="text-white/70 text-[15px] leading-[1.8]">{state.travelNote}</p>
+              <div className="bg-[#131f38] rounded-lg p-8 hover:bg-[#1e2a43] transition-all">
+                <h3 className="text-lg font-bold mb-4">Local Planning Notes</h3>
+                <p className="text-[#ddc1b0] text-sm leading-relaxed">{state.travelNote}</p>
               </div>
-              <div className="bg-[#15213a]/40 rounded-xl p-7 border border-white/5">
-                <h3 className="text-[20px] text-white mb-4">Common Service Areas</h3>
-                <p className="text-white/70 text-[15px] leading-[1.8]">
+              <div className="bg-[#131f38] rounded-lg p-8 hover:bg-[#1e2a43] transition-all">
+                <h3 className="text-lg font-bold mb-4">Common Service Areas</h3>
+                <p className="text-[#ddc1b0] text-sm leading-relaxed">
                   We regularly serve {state.markets.join(", ")} and nearby neighborhoods for
                   birthdays, family dinners, vacation rentals, and backyard celebrations.
                 </p>
@@ -177,46 +185,47 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
           </div>
         </section>
 
-        <section className="py-20 px-5" style={{ background: "var(--color-dark-bg-alt)" }}>
-          <div className="max-w-[900px] mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-[40px] text-white mb-4">
-                Standard <span className="text-[#fb8f2c]">Package</span>
+        {/* Standard Package */}
+        <section className="py-24 px-6" style={{ background: "var(--color-surface-container-low)" }}>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-6">
+                Standard Package
               </h2>
               <div className="flex items-center justify-center gap-4 mb-4">
-                <span className="text-[56px] text-[#fb8f2c] font-bold font-['Libre_Baskerville',serif]">$50</span>
-                <span className="text-white/60 text-[18px]">per person</span>
+                <span className="text-6xl text-[#ffb786] font-bold font-serif">$50</span>
+                <span className="text-[#ddc1b0]/60 text-lg">per person</span>
               </div>
-              <p className="text-white/50 text-[15px]">Choose 2 proteins · Minimum booking $500</p>
-              <p className="text-white/40 text-[13px] mt-2">Gratuity is not included; travel fees may apply based on distance</p>
+              <p className="text-[#ddc1b0]/60 text-sm">Choose 2 proteins · Minimum booking $500</p>
+              <p className="text-[#ddc1b0]/40 text-xs mt-2">Gratuity is not included; travel fees may apply based on distance</p>
             </div>
 
-            <div className="bg-[#15213a]/50 rounded-xl p-8 md:p-10 mb-10">
-              <h3 className="text-[24px] text-white mb-6 text-center">
+            <div className="bg-[#131f38] rounded-lg p-8 md:p-10 mb-8">
+              <h3 className="text-2xl font-bold mb-8 text-center">
                 What&apos;s Included in Every Hibachi Combo
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 {[
-                  { icon: "🥗", label: "Fresh Salad" },
-                  { icon: "🥦", label: "Hibachi Vegetables" },
-                  { icon: "🍚", label: "Fried Rice" },
-                  { icon: "🔥", label: "Live Grill Performance" },
+                  { icon: "nutrition", label: "Fresh Salad" },
+                  { icon: "eco", label: "Hibachi Vegetables" },
+                  { icon: "rice_bowl", label: "Fried Rice" },
+                  { icon: "local_fire_department", label: "Live Grill Performance" },
                 ].map((item) => (
                   <div key={item.label}>
-                    <div className="text-4xl mb-3">{item.icon}</div>
-                    <p className="text-white/80 text-[15px]">{item.label}</p>
+                    <span className="material-symbols-outlined text-[#e9c400] text-4xl mb-3 block">{item.icon}</span>
+                    <p className="text-sm">{item.label}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-[#15213a]/50 rounded-xl p-8 md:p-10 mb-10">
-              <h3 className="text-[24px] text-white mb-6 text-center">Protein Choices</h3>
-              <div className="flex flex-wrap justify-center gap-4">
+            <div className="bg-[#131f38] rounded-lg p-8 md:p-10 mb-8">
+              <h3 className="text-2xl font-bold mb-8 text-center">Protein Choices</h3>
+              <div className="flex flex-wrap justify-center gap-3">
                 {proteins.map((protein) => (
                   <span
                     key={protein}
-                    className="bg-[#fb8f2c]/15 border border-[#fb8f2c]/30 rounded-full px-6 py-3 text-white text-[16px]"
+                    className="bg-[#29344e]/40 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium"
                   >
                     {protein}
                   </span>
@@ -224,57 +233,58 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-10">
-              <div className="bg-[#15213a]/50 rounded-xl p-8 text-center">
-                <h3 className="text-[20px] text-white mb-3">Additional Protein</h3>
-                <p className="text-[#fb8f2c] text-[32px] font-bold font-['Libre_Baskerville',serif]">+$10</p>
-                <p className="text-white/50 text-[14px] mt-2">per person · add 1 more protein</p>
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-[#131f38] rounded-lg p-8 text-center">
+                <h3 className="text-lg font-bold mb-3">Additional Protein</h3>
+                <p className="text-[#ffb786] text-4xl font-bold font-serif">+$10</p>
+                <p className="text-[#ddc1b0]/50 text-xs mt-2">per person · add 1 more protein</p>
               </div>
-              <div className="bg-[#15213a]/50 rounded-xl p-8 text-center">
-                <h3 className="text-[20px] text-white mb-3">Kids Menu</h3>
-                <p className="text-[#fb8f2c] text-[32px] font-bold font-['Libre_Baskerville',serif]">$25</p>
-                <p className="text-white/50 text-[14px] mt-2">per person · ages 12 and under</p>
+              <div className="bg-[#131f38] rounded-lg p-8 text-center">
+                <h3 className="text-lg font-bold mb-3">Kids Menu</h3>
+                <p className="text-[#ffb786] text-4xl font-bold font-serif">$25</p>
+                <p className="text-[#ddc1b0]/50 text-xs mt-2">per person · ages 12 and under</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-20 px-5" style={{ background: "var(--color-dark-bg-alt)" }}>
-          <div className="max-w-[700px] mx-auto">
-            <h2 className="text-[40px] text-white text-center mb-12">
-              <span className="text-[#fb8f2c]">Appetizers</span>
+        {/* Appetizers */}
+        <section className="py-24 px-6" style={{ background: "var(--color-surface)" }}>
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-12">
+              Appetizers
             </h2>
-
             <div className="grid grid-cols-2 gap-4">
               {appetizers.map((appetizer) => (
                 <div
                   key={appetizer.name}
-                  className="bg-[#15213a]/50 rounded-xl p-6 flex items-center justify-between"
+                  className="bg-[#131f38] rounded-lg p-6 flex items-center justify-between"
                 >
-                  <span className="text-white text-[16px]">{appetizer.name}</span>
-                  <span className="text-[#fb8f2c] text-[20px] font-semibold">{appetizer.price}</span>
+                  <span className="text-sm font-medium">{appetizer.name}</span>
+                  <span className="text-[#e9c400] text-lg font-bold">{appetizer.price}</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-20 px-5" style={{ background: "var(--color-dark-bg)" }}>
-          <div className="max-w-[800px] mx-auto">
-            <h2 className="text-[36px] text-white text-center mb-10">
-              {state.name} <span className="text-[#fb8f2c]">Booking Notes</span>
+        {/* Booking Notes */}
+        <section className="py-24 px-6" style={{ background: "var(--color-surface-container-low)" }}>
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-12">
+              {state.name} Booking Notes
             </h2>
-            <div className="space-y-6">
-              <div className="bg-[#15213a]/40 rounded-lg p-6">
-                <h3 className="text-[18px] text-white mb-3">Dietary Accommodations</h3>
-                <p className="text-white/65 text-[15px] leading-[1.8]">
+            <div className="space-y-4">
+              <div className="bg-[#131f38] rounded-lg p-8">
+                <h3 className="text-lg font-bold mb-3">Dietary Accommodations</h3>
+                <p className="text-[#ddc1b0] text-sm leading-relaxed">
                   Vegetarian options are available, and we can accommodate many allergy-friendly
                   and gluten-free requests when noted ahead of time.
                 </p>
               </div>
-              <div className="bg-[#15213a]/40 rounded-lg p-6">
-                <h3 className="text-[18px] text-white mb-3">Service Coverage</h3>
-                <p className="text-white/65 text-[15px] leading-[1.8]">
+              <div className="bg-[#131f38] rounded-lg p-8">
+                <h3 className="text-lg font-bold mb-3">Service Coverage</h3>
+                <p className="text-[#ddc1b0] text-sm leading-relaxed">
                   {state.travelNote} We regularly serve {state.markets.join(", ")} and surrounding
                   areas. If your event is outside these markets, contact us for a travel quote.
                 </p>
@@ -283,20 +293,34 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
           </div>
         </section>
 
-        <section className="py-16 px-5 text-center" style={{ background: "var(--color-dark-bg-alt)" }}>
-          <h2 className="text-[36px] text-white mb-4">Ready to Book in {state.name}?</h2>
-          <p className="text-white/60 text-[16px] mb-3">Service Hours: Daily 11:00 AM – 10:30 PM</p>
-          <p className="text-[#fb8f2c] text-[24px] font-semibold mb-8">
+        {/* CTA */}
+        <section
+          className="py-20 px-6 text-center"
+          style={{
+            background: "linear-gradient(135deg, #0f1b34 0%, #131f38 50%, #1e2a43 100%)",
+          }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold italic mb-6">
+            Ready to Book in {state.name}?
+          </h2>
+          <p className="text-[#ddc1b0]/60 text-sm mb-2">Service Hours: Daily 11:00 AM – 10:30 PM</p>
+          <p className="text-[#ffb786] text-5xl font-bold font-serif mb-10">
             <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
           </p>
-          <a
-            href={siteConfig.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary text-[18px] px-12"
-          >
+          <a href="/#booking" className="btn-primary">
             BOOK NOW
           </a>
+          <p className="mt-4 text-xs text-[#ddc1b0]/50">
+            Prefer Acuity directly?{" "}
+            <a
+              href={siteConfig.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#ffb786] underline underline-offset-2 hover:text-[#f58220]"
+            >
+              Open in a new tab
+            </a>
+          </p>
         </section>
       </main>
       <Footer />

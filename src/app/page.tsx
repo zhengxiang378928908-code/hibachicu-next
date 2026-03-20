@@ -10,6 +10,7 @@ import HowItWorks from "@/components/HowItWorks";
 import MenuPricing from "@/components/MenuPricing";
 import ServiceAreas from "@/components/ServiceAreas";
 import FAQ from "@/components/FAQ";
+import Booking from "@/components/Booking";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/site";
@@ -65,6 +66,7 @@ export default function Home() {
         <MenuPricing />
         <ServiceAreas />
         <FAQ />
+        <Booking />
         <Contact />
       </main>
       <Footer />

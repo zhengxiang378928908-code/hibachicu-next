@@ -8,7 +8,7 @@ export const siteConfig = {
     "https://app.acuityscheduling.com/schedule/f65e453b/appointment/88159880/calendar/13406740?appointmentTypeIds%5B%5D=88159880",
   phoneHref: "tel:646209347",
   phoneDisplay: "646209347",
-  email: "www.hibachicu@gmail.com",
+  email: "hibachicu@gmail.com",
   ogImage: "/opengraph-image",
   serviceAreas: [
     "Pennsylvania",

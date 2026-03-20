@@ -4,47 +4,58 @@ export default function Testimonials() {
   const reviews = [
     {
       name: "Olivia R.",
+      location: "Stamford, NY",
       text: "Amazing hibachi at home experience. The chef brought the full hibachi setup, cooked everything fresh, and put on a fun fire show that made the night unforgettable.",
     },
     {
       name: "James T.",
+      location: "Greenwich, CT",
       text: "We booked Hibachi CU for a birthday party and it was the highlight of the event. The chef was entertaining, the food was delicious, and our guests loved every moment.",
     },
     {
       name: "Sarah M.",
+      location: "Miami, FL",
       text: "Best catering experience we've ever had! The hibachi chef was incredible — great food, amazing entertainment, and zero stress for us. Highly recommend!",
     },
   ];
 
   return (
     <section
-      className="py-20 px-5"
-      style={{ background: "var(--color-dark-bg-alt)" }}
+      className="py-24"
+      style={{ background: "var(--color-surface-container-low)" }}
     >
-      <div className="max-w-[1200px] mx-auto">
-        <h2 className="text-[44px] text-white text-center mb-14">
-          What Our <span className="text-[#fb8f2c]">Customers</span> Say
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center mb-4 italic">
+          &ldquo;A Night We&rsquo;ll Never Forget&rdquo;
         </h2>
+        <p className="text-center text-[#ddc1b0] mb-16 text-lg">What our guests are saying</p>
 
         <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((review, i) => (
             <div
               key={i}
-              className="bg-[#15213a]/50 rounded-lg p-8 border border-white/5"
+              className="bg-[#131f38] rounded-lg p-8 hover:bg-[#1e2a43] transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-1 mb-6">
+                {[...Array(5)].map((_, j) => (
+                  <span key={j} className="text-[#e9c400] text-lg">★</span>
+                ))}
+              </div>
+              <p className="text-[#ddc1b0] text-[15px] leading-relaxed mb-8 italic">
+                &ldquo;{review.text}&rdquo;
+              </p>
+              <div className="flex items-center gap-3">
                 <Image
                   src="/images/google-logo.png"
                   alt="Google"
-                  width={24}
-                  height={24}
+                  width={20}
+                  height={20}
                 />
-                <span className="text-[#fb8f2c] text-lg">★★★★★</span>
+                <div>
+                  <p className="text-[#ffb786] font-semibold text-sm">— {review.name}</p>
+                  <p className="text-[#ddc1b0]/60 text-xs">{review.location}</p>
+                </div>
               </div>
-              <p className="text-white/80 text-[16px] leading-[1.8] mb-6 italic">
-                &ldquo;{review.text}&rdquo;
-              </p>
-              <p className="text-white font-semibold text-[16px]">— {review.name}</p>
             </div>
           ))}
         </div>
