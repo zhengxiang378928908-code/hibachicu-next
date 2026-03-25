@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { getMenuCitiesForState } from "@/lib/menu-cities";
 import { menuStates } from "@/lib/menu-states";
 import { siteConfig } from "@/lib/site";
 
@@ -82,17 +83,36 @@ export default function MenuPage() {
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {locations.map((loc) => (
-                    <Link
+                    <div
                       key={loc.name}
-                      href={`/menu/${loc.slug}`}
-                      className="flex items-center gap-3 bg-[#131f38] rounded-lg px-6 py-5 hover:bg-[#1e2a43] transition-all duration-300 group"
+                      className="rounded-lg bg-[#131f38] px-6 py-5 transition-all duration-300 hover:bg-[#1e2a43]"
                     >
-                      <span className="material-symbols-outlined text-[#ffb786] text-xl">location_on</span>
-                      <span className="text-base group-hover:text-[#ffb786] transition-colors">
-                        {loc.name}
-                      </span>
-                      <span className="ml-auto text-[#ddc1b0]/30 group-hover:text-[#ffb786] transition-colors">→</span>
-                    </Link>
+                      <Link
+                        href={`/menu/${loc.slug}`}
+                        className="group flex items-center gap-3"
+                      >
+                        <span className="material-symbols-outlined text-xl text-[#ffb786]">
+                          location_on
+                        </span>
+                        <span className="text-base transition-colors group-hover:text-[#ffb786]">
+                          {loc.name}
+                        </span>
+                        <span className="ml-auto text-[#ddc1b0]/30 transition-colors group-hover:text-[#ffb786]">
+                          →
+                        </span>
+                      </Link>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {getMenuCitiesForState(loc.slug).map((city) => (
+                          <Link
+                            key={city.citySlug}
+                            href={city.path}
+                            className="rounded-full bg-[#29344e]/45 px-3 py-1.5 text-xs text-[#ddc1b0] transition-colors hover:text-[#ffb786]"
+                          >
+                            {city.cityName}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -111,9 +131,9 @@ export default function MenuPage() {
           <p className="text-[#ffb786] text-4xl font-bold font-serif mb-8">
             <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
           </p>
-          <a href="/#booking" className="btn-primary">
+          <Link href="/#booking" className="btn-primary">
             BOOK NOW
-          </a>
+          </Link>
           <p className="mt-4 text-xs text-[#ddc1b0]/50">
             Prefer Acuity directly?{" "}
             <a

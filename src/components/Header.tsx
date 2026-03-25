@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { siteConfig } from "@/lib/site";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,7 +23,6 @@ export default function Header() {
 
   useEffect(() => {
     if (pathname !== "/") {
-      setActiveSection("");
       return;
     }
 
@@ -116,12 +114,12 @@ export default function Header() {
           ))}
         </div>
 
-        <a
+        <Link
           href="/#booking"
           className="hidden md:inline-block bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400] font-bold px-6 py-2.5 rounded-full text-xs tracking-widest hover:scale-105 active:scale-95 transition-all duration-300"
         >
           BOOK NOW
-        </a>
+        </Link>
 
         {/* Mobile Toggle */}
         <button
@@ -150,13 +148,13 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <a
+          <Link
             href="/#booking"
             className="mt-4 block text-center bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400] font-bold px-6 py-3 rounded-full text-xs tracking-widest"
             onClick={() => setMenuOpen(false)}
           >
             BOOK NOW
-          </a>
+          </Link>
         </nav>
       )}
     </header>

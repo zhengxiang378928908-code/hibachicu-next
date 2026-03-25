@@ -42,12 +42,9 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="/#booking"
-              className="btn-primary text-center"
-            >
+            <Link href="/#booking" className="btn-primary text-center">
               BOOK YOUR EVENT NOW
-            </a>
+            </Link>
             <Link
               href="/menu"
               className="btn-secondary text-center"

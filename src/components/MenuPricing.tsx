@@ -54,10 +54,10 @@ export default function MenuPricing() {
             </ul>
             <div className="mt-8">
               <Link
-                href="/menu/connecticut"
+                href="/menu"
                 className="block text-center bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400] font-bold px-6 py-3 rounded-full text-xs tracking-widest hover:shadow-[0_0_20px_rgba(245,130,32,0.4)] transition-all"
               >
-                GET A MENU & PRICE QUOTE
+                VIEW LOCAL MENUS & PRICING
               </Link>
             </div>
           </div>

@@ -4,7 +4,7 @@ export default function Testimonials() {
   const reviews = [
     {
       name: "Olivia R.",
-      location: "Stamford, NY",
+      location: "Stamford, CT",
       text: "Amazing hibachi at home experience. The chef brought the full hibachi setup, cooked everything fresh, and put on a fun fire show that made the night unforgettable.",
     },
     {
@@ -15,7 +15,7 @@ export default function Testimonials() {
     {
       name: "Sarah M.",
       location: "Miami, FL",
-      text: "Best catering experience we've ever had! The hibachi chef was incredible — great food, amazing entertainment, and zero stress for us. Highly recommend!",
+      text: "Best catering experience we've ever had! The hibachi chef was incredible, the food was amazing, and the whole experience was completely stress-free for our group.",
     },
   ];
 
@@ -28,7 +28,9 @@ export default function Testimonials() {
         <h2 className="text-4xl font-bold text-center mb-4 italic">
           &ldquo;A Night We&rsquo;ll Never Forget&rdquo;
         </h2>
-        <p className="text-center text-[#ddc1b0] mb-16 text-lg">What our guests are saying</p>
+        <p className="text-center text-[#ddc1b0] mb-16 text-lg">
+          Real guest reviews from past hibachi events
+        </p>
 
         <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((review, i) => (
@@ -52,7 +54,7 @@ export default function Testimonials() {
                   height={20}
                 />
                 <div>
-                  <p className="text-[#ffb786] font-semibold text-sm">— {review.name}</p>
+                  <p className="text-[#ffb786] font-semibold text-sm">- {review.name}</p>
                   <p className="text-[#ddc1b0]/60 text-xs">{review.location}</p>
                 </div>
               </div>

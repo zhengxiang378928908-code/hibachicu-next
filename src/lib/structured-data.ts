@@ -1,4 +1,5 @@
 import { faqs } from "@/lib/faqs";
+import type { MenuCity } from "@/lib/menu-cities";
 import type { MenuState } from "@/lib/menu-states";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
@@ -69,6 +70,7 @@ export function stateMenuStructuredData(state: MenuState) {
       "@type": "Service",
       serviceType: "Private Hibachi Chef Catering",
       name: `${state.name} Hibachi Menu`,
+      description: state.metaDescription,
       provider: {
         "@type": "LocalBusiness",
         name: siteConfig.name,
@@ -86,24 +88,81 @@ export function stateMenuStructuredData(state: MenuState) {
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: [
+      mainEntity: state.localFaqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ];
+}
+
+export function cityMenuStructuredData(city: MenuCity) {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
         {
-          "@type": "Question",
-          name: `What areas do you serve in ${state.name}?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `We serve ${state.markets.join(", ")}, plus nearby communities throughout ${state.name}.`,
-          },
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: absoluteUrl("/"),
         },
         {
-          "@type": "Question",
-          name: `How much does hibachi catering cost in ${state.name}?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Our standard package starts at $50 per person with a $500 minimum booking. Travel fees may apply based on distance.",
-          },
+          "@type": "ListItem",
+          position: 2,
+          name: "Menu",
+          item: absoluteUrl("/menu"),
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: `${city.stateName} Hibachi Menu`,
+          item: absoluteUrl(`/menu/${city.stateSlug}`),
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: `${city.cityName} Hibachi Catering`,
+          item: absoluteUrl(city.path),
         },
       ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Private Hibachi Chef Catering",
+      name: `${city.cityName} Hibachi Catering`,
+      description: city.metaDescription,
+      provider: {
+        "@type": "LocalBusiness",
+        name: siteConfig.name,
+        url: siteConfig.siteUrl,
+      },
+      areaServed: [city.cityName, city.stateLabel, ...city.nearbyMarkets],
+      offers: {
+        "@type": "Offer",
+        price: "50",
+        priceCurrency: "USD",
+        description: "Starting price per person. Minimum booking applies.",
+      },
+      url: absoluteUrl(city.path),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: city.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
     },
   ];
 }
