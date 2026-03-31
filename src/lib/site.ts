@@ -6,8 +6,8 @@ export const siteConfig = {
     "Mobile hibachi catering for backyard parties, birthdays, vacation rentals, and private events. Book a private hibachi chef at home with live cooking and transparent pricing.",
   bookingUrl:
     "https://app.acuityscheduling.com/schedule/f65e453b/appointment/88159880/calendar/13406740?appointmentTypeIds%5B%5D=88159880",
-  phoneHref: "tel:646209347",
-  phoneDisplay: "646209347",
+  phoneHref: "tel:6462093047",
+  phoneDisplay: "6462093047",
   email: "hibachicu@gmail.com",
   ogImage: "/opengraph-image",
   serviceAreas: [
