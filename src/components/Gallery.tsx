@@ -8,9 +8,9 @@ type MediaItem =
   | { type: "video"; src: string; title: string };
 
 export default function Gallery() {
-  const [playingIdx, setPlayingIdx] = useState<number | null>(null);
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
   const [posters, setPosters] = useState<Map<number, string>>(new Map());
-  const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const items: MediaItem[] = [
     { type: "video", src: "/videos/62_1767297847.mp4", title: "Fire Performance" },
@@ -76,26 +76,54 @@ export default function Gallery() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleVideoToggle = async (idx: number) => {
-    const video = videoRefs.current.get(idx);
-    if (!video) return;
+  const closeLightbox = useCallback(() => {
+    setSelectedIdx(null);
+  }, []);
 
-    if (playingIdx === idx) {
-      video.pause();
-      setPlayingIdx(null);
-    } else {
-      if (playingIdx !== null) {
-        const prev = videoRefs.current.get(playingIdx);
-        prev?.pause();
-      }
-      try {
-        await video.play();
-        setPlayingIdx(idx);
-      } catch (error) {
-        console.error("Video playback failed", error);
-      }
+  const showPrev = useCallback(() => {
+    setSelectedIdx((current) => {
+      if (current === null) return current;
+      return current === 0 ? items.length - 1 : current - 1;
+    });
+  }, [items.length]);
+
+  const showNext = useCallback(() => {
+    setSelectedIdx((current) => {
+      if (current === null) return current;
+      return current === items.length - 1 ? 0 : current + 1;
+    });
+  }, [items.length]);
+
+  useEffect(() => {
+    if (selectedIdx === null) {
+      document.body.style.removeProperty("overflow");
+      return;
     }
-  };
+
+    dialogRef.current?.focus();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeLightbox();
+      } else if (event.key === "ArrowLeft") {
+        showPrev();
+      } else if (event.key === "ArrowRight") {
+        showNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeLightbox, selectedIdx, showNext, showPrev]);
+
+  const selectedItem = selectedIdx === null ? null : items[selectedIdx];
+  const selectedPosition = selectedIdx === null ? null : selectedIdx + 1;
 
   return (
     <section id="gallery" className="py-24" style={{ background: "var(--color-surface)" }}>
@@ -111,43 +139,39 @@ export default function Gallery() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-auto">
           {items.map((item, i) =>
             item.type === "video" ? (
-              <div
+              <button
                 key={i}
-                className="relative aspect-[9/16] overflow-hidden rounded-lg bg-[#131f38] row-span-2 cursor-pointer group"
-                onClick={() => handleVideoToggle(i)}
+                type="button"
+                className="relative aspect-[9/16] overflow-hidden rounded-lg bg-[#131f38] row-span-2 cursor-pointer group text-left"
+                onClick={() => setSelectedIdx(i)}
+                aria-label={`Open video: ${item.title}`}
               >
                 <video
-                  ref={(el) => {
-                    if (el) videoRefs.current.set(i, el);
-                  }}
                   src={item.src}
                   preload="metadata"
                   poster={posters.get(i) || undefined}
                   className="w-full h-full object-cover"
                   playsInline
                   muted
-                  loop
-                  onEnded={() => setPlayingIdx(null)}
                 />
-                {/* Play button overlay */}
-                {playingIdx !== i && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">
-                    <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">
+                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
                   </div>
-                )}
-                {/* Video title */}
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
                   <span className="text-sm font-medium text-white/90">{item.title}</span>
                 </div>
-              </div>
+              </button>
             ) : (
-              <div
+              <button
                 key={i}
+                type="button"
                 className="relative aspect-[4/3] overflow-hidden rounded-lg group cursor-pointer"
+                onClick={() => setSelectedIdx(i)}
+                aria-label={`Open image: ${item.alt}`}
               >
                 <Image
                   src={item.src}
@@ -157,10 +181,100 @@ export default function Gallery() {
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-              </div>
+              </button>
             )
           )}
         </div>
+
+        {selectedItem ? (
+          <div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={
+              selectedItem.type === "video" ? selectedItem.title : selectedItem.alt
+            }
+            tabIndex={-1}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020814]/92 px-4 py-8"
+            onClick={closeLightbox}
+          >
+            <button
+              type="button"
+              className="absolute right-4 top-4 rounded-full bg-white/12 px-3 py-2 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-white/20"
+              onClick={closeLightbox}
+              aria-label="Close gallery preview"
+            >
+              CLOSE
+            </button>
+
+            <button
+              type="button"
+              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/12 p-3 text-white transition-colors hover:bg-white/20 md:left-6"
+              onClick={(event) => {
+                event.stopPropagation();
+                showPrev();
+              }}
+              aria-label="Previous media"
+            >
+              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              className="relative w-full max-w-5xl"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="overflow-hidden rounded-2xl bg-[#0b1323] shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+                {selectedItem.type === "video" ? (
+                  <video
+                    key={selectedItem.src}
+                    src={selectedItem.src}
+                    poster={selectedIdx === null ? undefined : posters.get(selectedIdx)}
+                    className="max-h-[80vh] w-full bg-black object-contain"
+                    controls
+                    autoPlay
+                    playsInline
+                  />
+                ) : (
+                  <div className="relative h-[80vh] w-full">
+                    <Image
+                      src={selectedItem.src}
+                      alt={selectedItem.alt}
+                      fill
+                      className="object-contain"
+                      sizes="100vw"
+                      priority
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-4 flex items-center justify-between gap-4 text-sm text-[#ddc1b0]">
+                <p className="max-w-3xl">
+                  {selectedItem.type === "video" ? selectedItem.title : selectedItem.alt}
+                </p>
+                <p className="whitespace-nowrap text-[#ffb786]">
+                  {selectedPosition} / {items.length}
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/12 p-3 text-white transition-colors hover:bg-white/20 md:right-6"
+              onClick={(event) => {
+                event.stopPropagation();
+                showNext();
+              }}
+              aria-label="Next media"
+            >
+              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );
