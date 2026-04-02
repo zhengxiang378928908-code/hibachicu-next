@@ -17,7 +17,7 @@ import { siteConfig } from "@/lib/site";
 import { homeStructuredData } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: `Mobile Hibachi Catering & Private Hibachi Chef at Home`,
+  title: `Book Mobile Hibachi Catering | Top Private Hibachi Chef at Home`,
   description:
     "Book mobile hibachi catering for birthdays, backyard dinners, vacation rentals, and private events. Hibachi CU brings a private hibachi chef, live fire show, and on-site cooking to your home.",
   alternates: {

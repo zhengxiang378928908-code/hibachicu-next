@@ -1,5 +1,7 @@
 "use client";
 
+import type { CSSProperties } from "react";
+
 type Particle = {
   id: number;
   left: string;
@@ -49,8 +51,8 @@ export default function FireEmbers() {
             animationDuration: p.animationDuration,
             animationDelay: p.animationDelay,
             boxShadow: `0 0 ${parseInt(p.size) * 3}px rgba(245, 130, 32, 0.8), 0 0 ${parseInt(p.size) * 6}px rgba(245, 130, 32, 0.4)`,
-            '--drift': p.drift,
-          } as React.CSSProperties}
+            "--drift": p.drift,
+          } as CSSProperties}
         />
       ))}
     </div>

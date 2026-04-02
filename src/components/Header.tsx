@@ -118,11 +118,9 @@ export default function Header() {
 
         <div className="hidden md:flex items-center gap-6">
           <BookNowLink
-            className="inline-flex items-center justify-center bg-gradient-to-r from-[#ffb786] via-[#ffdcb8] to-[#f58220] text-[#3b1900] font-extrabold px-6 py-2.5 rounded-full text-[12px] tracking-[0.15em] shadow-[0_4px_15px_rgba(245,130,32,0.3)] hover:shadow-[0_8px_25px_rgba(245,130,32,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 relative overflow-hidden group"
+            className="inline-flex items-center justify-center bg-[#f58220] hover:bg-[#ffb786] text-white font-semibold px-6 py-2 rounded-full text-[13px] tracking-widest shadow-[0_4px_12px_rgba(245,130,32,0.3)] hover:shadow-[0_6px_20px_rgba(245,130,32,0.5)] transition-all duration-300"
           >
-            <span className="relative z-10 flex items-center">
-              BOOK NOW
-            </span>
+            BOOK NOW
           </BookNowLink>
         </div>
 
