@@ -92,14 +92,14 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#06132b]/80 backdrop-blur-xl">
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-[72px]">
-        <Link href="/" className="block rounded-lg overflow-hidden shadow-[0_0_12px_rgba(245,130,32,0.25)]">
+        <Link href="/" className="block shrink-0 transition-transform duration-300 hover:scale-105">
           <Image
             src="/images/logo.png"
             alt="Hibachi CU"
-            width={107}
-            height={52}
+            width={110}
+            height={54}
             priority
-            className="rounded-lg"
+            className="object-contain drop-shadow-[0_4px_12px_rgba(245,130,32,0.3)]"
           />
         </Link>
 
@@ -116,20 +116,29 @@ export default function Header() {
           ))}
         </div>
 
-        <BookNowLink
-          className="hidden md:inline-flex btn-primary"
-          style={{ padding: "12px 28px", fontSize: "13px", letterSpacing: "2px" }}
-        >
-          BOOK NOW
-        </BookNowLink>
+        <div className="hidden md:flex items-center gap-6">
+          <BookNowLink
+            className="inline-flex items-center justify-center bg-gradient-to-r from-[#ffb786] via-[#ffdcb8] to-[#f58220] text-[#3b1900] font-extrabold px-6 py-2.5 rounded-full text-[12px] tracking-[0.15em] shadow-[0_4px_15px_rgba(245,130,32,0.3)] hover:shadow-[0_8px_25px_rgba(245,130,32,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 relative overflow-hidden group"
+          >
+            <span className="relative z-10 flex items-center">
+              BOOK NOW
+            </span>
+          </BookNowLink>
+        </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-[#ddc1b0] text-3xl"
+          className="md:hidden text-[#ffb786] p-2 -mr-2 active:scale-95 transition-transform"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          {menuOpen ? "✕" : "☰"}
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {menuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
         </button>
       </nav>
 

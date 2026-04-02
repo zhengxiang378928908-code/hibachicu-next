@@ -1,27 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
+type Particle = {
+  id: number;
+  left: string;
+  animationDuration: string;
+  animationDelay: string;
+  size: string;
+  opacity: number;
+  drift: string;
+};
+
+function seededValue(seed: number) {
+  const value = Math.sin(seed * 9999.91) * 10000;
+  return value - Math.floor(value);
+}
+
+const particles: Particle[] = Array.from({ length: 35 }).map((_, i) => {
+  const leftSeed = seededValue(i + 1);
+  const durationSeed = seededValue(i + 101);
+  const delaySeed = seededValue(i + 201);
+  const sizeSeed = seededValue(i + 301);
+  const opacitySeed = seededValue(i + 401);
+  const driftSeed = seededValue(i + 501);
+
+  return {
+    id: i,
+    left: `${leftSeed * 100}%`,
+    animationDuration: `${durationSeed * 12 + 8}s`,
+    animationDelay: `-${delaySeed * 20}s`,
+    size: `${sizeSeed * 3 + 2}px`,
+    opacity: opacitySeed * 0.5 + 0.3,
+    drift: `${(driftSeed - 0.5) * 100}px`,
+  };
+});
 
 export default function FireEmbers() {
-  const [particles, setParticles] = useState<Array<{ id: number; left: string; animationDuration: string; animationDelay: string; size: string; opacity: number; drift: string }>>([]);
-
-  useEffect(() => {
-    // Generate particles on client side to avoid hydration mismatched
-    // Adjust length to change particle density
-    const newParticles = Array.from({ length: 35 }).map((_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      animationDuration: `${Math.random() * 12 + 8}s`, // Between 8s and 20s
-      animationDelay: `-${Math.random() * 20}s`, // Start randomly mid-animation
-      size: `${Math.random() * 3 + 2}px`, // 2px to 5px
-      opacity: Math.random() * 0.5 + 0.3,
-      drift: `${(Math.random() - 0.5) * 100}px`, // Random horizontal drift distance
-    }));
-    setParticles(newParticles);
-  }, []);
-
-  if (particles.length === 0) return null;
-
   return (
     <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden mix-blend-screen" aria-hidden="true">
       {particles.map((p) => (
