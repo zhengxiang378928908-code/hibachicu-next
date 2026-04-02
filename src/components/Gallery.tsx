@@ -97,11 +97,11 @@ export default function Gallery() {
     <section id="gallery" className="py-24" style={{ background: "var(--color-surface)" }}>
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-4">
-          Our Culinary Gallery
+          Photos & Videos
         </h2>
 
         <p className="text-center text-[#ddc1b0] mb-12 text-lg">
-          Where the fire, the products, and the memories live.
+          See past hibachi parties, chef performances, and at-home event setups.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-auto">

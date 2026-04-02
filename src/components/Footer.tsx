@@ -17,7 +17,8 @@ export default function Footer() {
               className="mb-4 rounded-lg shadow-[0_0_12px_rgba(245,130,32,0.25)]"
             />
             <p className="text-[#ddc1b0]/60 text-sm leading-relaxed">
-              The premier private hibachi experience — luxury catering, incredible entertainment, chef-quality cuisine.
+              Private hibachi catering for birthdays, backyard dinners, family events, and
+              vacation rentals.
             </p>
           </div>
 

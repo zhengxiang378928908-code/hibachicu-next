@@ -40,11 +40,24 @@ export default function MenuPricing() {
             <h3 className="text-2xl font-bold mb-8">Pricing Details</h3>
             <ul className="space-y-5">
               {[
-                { icon: "check_circle", text: "Competitive per-person pricing fees." },
-                { icon: "check_circle", text: "Minimum guest count applies (10+ guests)." },
-                { icon: "check_circle", text: "Travel fees may vary based on your area." },
+                {
+                  icon: "check_circle",
+                  text: "Adults $50/person, kids $25/person, extra protein +$10/person.",
+                },
+                {
+                  icon: "check_circle",
+                  text: "Most events have a $500 minimum booking before travel fees.",
+                },
+                {
+                  icon: "check_circle",
+                  text: "Gratuity is not included; travel fees may apply based on location.",
+                },
                 { icon: "check_circle", text: "No setup fee." },
-                { icon: "check_circle", text: "Deposit required to secure your date." },
+                { icon: "check_circle", text: "A deposit is required to secure your date." },
+                {
+                  icon: "check_circle",
+                  text: "The remaining balance is collected after the event.",
+                },
               ].map((item) => (
                 <li key={item.text} className="flex items-start gap-3">
                   <span className="material-symbols-outlined text-[#e9c400] text-sm mt-0.5">{item.icon}</span>
@@ -57,7 +70,7 @@ export default function MenuPricing() {
                 href="/menu"
                 className="block text-center bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400] font-bold px-6 py-3 rounded-full text-xs tracking-widest hover:shadow-[0_0_20px_rgba(245,130,32,0.4)] transition-all"
               >
-                VIEW LOCAL MENUS & PRICING
+                VIEW MENU
               </Link>
             </div>
           </div>
@@ -68,7 +81,7 @@ export default function MenuPricing() {
             href="/menu"
             className="inline-block text-[#ffb786] text-sm font-semibold hover:text-[#f58220] transition-all tracking-wide"
           >
-            View Full Hibachi Menu →
+            View Menu →
           </Link>
         </div>
       </div>

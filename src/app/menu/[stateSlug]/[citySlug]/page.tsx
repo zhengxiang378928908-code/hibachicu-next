@@ -191,10 +191,11 @@ export default async function CityMenuPage({ params }: CityMenuPageProps) {
                 <span className="text-lg text-[#ddc1b0]/60">per person</span>
               </div>
               <p className="text-sm text-[#ddc1b0]/60">
-                Choose 2 proteins · Minimum booking $500
+                Choose 2 proteins · Most events have a $500 minimum booking
               </p>
               <p className="mt-2 text-xs text-[#ddc1b0]/40">
-                Travel fees vary by address, especially for destination homes and rentals
+                If your guest total prices below the minimum, the event is quoted at $500.
+                Gratuity is not included; travel fees may apply based on location.
               </p>
             </div>
 
@@ -211,6 +212,23 @@ export default async function CityMenuPage({ params }: CityMenuPageProps) {
                     {protein}
                   </span>
                 ))}
+              </div>
+            </div>
+
+            <div className="mb-8 grid gap-6 md:grid-cols-2">
+              <div className="rounded-2xl bg-[#131f38] p-8 text-center">
+                <h3 className="mb-3 text-lg font-bold">Additional Protein</h3>
+                <p className="font-serif text-4xl font-bold text-[#ffb786]">+$10</p>
+                <p className="mt-2 text-xs text-[#ddc1b0]/50">
+                  per person · add 1 more protein
+                </p>
+              </div>
+              <div className="rounded-2xl bg-[#131f38] p-8 text-center">
+                <h3 className="mb-3 text-lg font-bold">Kids Menu</h3>
+                <p className="font-serif text-4xl font-bold text-[#ffb786]">$25</p>
+                <p className="mt-2 text-xs text-[#ddc1b0]/50">
+                  per person · ages 12 and under
+                </p>
               </div>
             </div>
 
@@ -318,7 +336,7 @@ export default async function CityMenuPage({ params }: CityMenuPageProps) {
               rel="noopener noreferrer"
               className="text-[#ffb786] underline underline-offset-2 hover:text-[#f58220]"
             >
-              Open in a new tab
+              Open Acuity
             </a>
           </p>
         </section>

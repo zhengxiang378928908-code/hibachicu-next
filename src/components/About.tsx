@@ -11,14 +11,13 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div>
             <h2 className="text-4xl font-bold mb-8">
-              What is Hibachi CU?
+              What To Expect
             </h2>
 
             <p className="text-lg text-[#ddc1b0] leading-relaxed mb-12">
-              Hibachi CU is a mobile hibachi catering service that brings the excitement of
-              teppanyaki-style cooking directly to your backyard, patio, vacation rental, or
-              Airbnb property. Our skilled chefs arrive with everything needed to create an
-              unforgettable dining experience right at your location.
+              Hibachi CU brings a private hibachi chef directly to your backyard, patio, vacation
+              rental, or Airbnb. We arrive with the grill, ingredients, and cooking setup needed
+              to serve your group on-site from start to finish.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

@@ -28,7 +28,7 @@ export default function HowItWorks() {
     {
       icon: "payments",
       title: "Payment",
-      desc: "Payment expected ready on our secure payment link after the event.",
+      desc: "A deposit secures your date, and the remaining balance is collected after the event through our secure payment link.",
     },
   ];
 
@@ -39,7 +39,7 @@ export default function HowItWorks() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-16">
-          The Journey to Your Table
+          How Booking Works
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">

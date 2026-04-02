@@ -243,10 +243,11 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
                 <span className="text-lg text-[#ddc1b0]/60">per person</span>
               </div>
               <p className="text-sm text-[#ddc1b0]/60">
-                Choose 2 proteins · Minimum booking $500
+                Choose 2 proteins · Most events have a $500 minimum booking
               </p>
               <p className="mt-2 text-xs text-[#ddc1b0]/40">
-                Gratuity is not included; travel fees may apply based on distance
+                If your guest total prices below the minimum, the event is quoted at $500.
+                Gratuity is not included; travel fees may apply based on location.
               </p>
             </div>
 
@@ -370,7 +371,7 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
               rel="noopener noreferrer"
               className="text-[#ffb786] underline underline-offset-2 hover:text-[#f58220]"
             >
-              Open in a new tab
+              Open Acuity
             </a>
           </p>
         </section>

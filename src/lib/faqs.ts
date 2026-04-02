@@ -4,8 +4,8 @@ export const faqs = [
     a: "Hibachi at home is a private dining experience where a professional hibachi chef comes to your location with a portable grill and all fresh ingredients to cook a teppanyaki-style meal right in front of you and your guests.",
   },
   {
-    q: "How many guests do you require?",
-    a: "Most private hibachi parties require a minimum booking amount. Contact us for the exact guest minimum and pricing for your area.",
+    q: "Is there a minimum booking?",
+    a: "Most private hibachi events have a $500 minimum booking before travel fees. Standard pricing starts at $50 per adult, $25 per child, and +$10 per person for an extra protein. If your guest total prices below the minimum, the event is quoted at $500.",
   },
   {
     q: "What do I need to provide?",
@@ -20,7 +20,7 @@ export const faqs = [
     a: "We recommend booking at least one to two weeks in advance to secure your preferred date, especially during busy weekends and holidays.",
   },
   {
-    q: "What payment methods do you accept?",
-    a: "We accept major payment methods, and final payment is collected after the service is complete.",
+    q: "How does payment work?",
+    a: "A deposit is required to secure your date. The remaining balance is collected after the event through our secure payment link. Gratuity is not included; travel fees may apply based on location.",
   },
 ];

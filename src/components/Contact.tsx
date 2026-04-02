@@ -13,10 +13,10 @@ export default function Contact() {
     >
       <div className="max-w-3xl mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-bold italic mb-6">
-          Ready to Ignite the Night?
+          Ready to Book Your Hibachi Party?
         </h2>
         <p className="text-[#ddc1b0] text-lg mb-8">
-          Our booking specialists are ready to help you plan the perfect private hibachi event.
+          Call or text us to check availability, pricing, and travel for your event.
         </p>
         <p className="text-[#ffb786] text-5xl md:text-6xl font-bold mb-10 font-serif">
           <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
@@ -31,7 +31,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             className="btn-secondary text-center"
           >
-            BOOK ON ACUITY
+            OPEN ACUITY
           </a>
         </div>
       </div>

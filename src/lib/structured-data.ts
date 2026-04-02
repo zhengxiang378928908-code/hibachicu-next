@@ -81,7 +81,8 @@ export function stateMenuStructuredData(state: MenuState) {
         "@type": "Offer",
         price: "50",
         priceCurrency: "USD",
-        description: "Starting price per person. Minimum booking applies.",
+        description:
+          "Standard pricing starts at $50 per adult, $25 per child, and +$10 per person for an extra protein. Most events have a $500 minimum booking. Gratuity is not included; travel fees may apply based on location.",
       },
       url: absoluteUrl(`/menu/${state.slug}`),
     },
@@ -148,7 +149,8 @@ export function cityMenuStructuredData(city: MenuCity) {
         "@type": "Offer",
         price: "50",
         priceCurrency: "USD",
-        description: "Starting price per person. Minimum booking applies.",
+        description:
+          "Standard pricing starts at $50 per adult, $25 per child, and +$10 per person for an extra protein. Most events have a $500 minimum booking. Gratuity is not included; travel fees may apply based on location.",
       },
       url: absoluteUrl(city.path),
     },

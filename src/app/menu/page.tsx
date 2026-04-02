@@ -65,10 +65,18 @@ export default function MenuPage() {
               We offer professional private hibachi chef services with menus and pricing
               that vary by state and location.
             </p>
+            <p className="text-[#ddc1b0]/70 text-base leading-relaxed mb-3">
+              Standard pricing starts at{" "}
+              <span className="text-[#e9c400] font-semibold">$50 per adult</span>,{" "}
+              <span className="text-[#e9c400] font-semibold">$25 per child</span>, and{" "}
+              <span className="text-[#e9c400] font-semibold">+$10 per person</span> for
+              an extra protein.
+            </p>
             <p className="text-[#ddc1b0]/70 text-base leading-relaxed">
-              Most at-home hibachi parties start at a{" "}
-              <span className="text-[#e9c400] font-semibold">$500 minimum</span> for
-              your home, backyard, Airbnb, or vacation rental, depending on guest count and travel distance.
+              Most events also have a{" "}
+              <span className="text-[#e9c400] font-semibold">$500 minimum booking</span>.
+              If your guest total prices below that minimum, we quote the event at $500 before
+              travel fees.
             </p>
           </div>
         </section>
@@ -142,7 +150,7 @@ export default function MenuPage() {
               rel="noopener noreferrer"
               className="text-[#ffb786] underline underline-offset-2 hover:text-[#f58220]"
             >
-              Open in a new tab
+              Open Acuity
             </a>
           </p>
         </section>

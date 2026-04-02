@@ -305,7 +305,7 @@ export const menuStates: MenuState[] = [
     planningChecklist: [
       "Summer weekends near Newport and Narragansett should be reserved early.",
       "If the event is at a coastal rental, confirm parking and whether the chef setup is on a deck, patio, or yard.",
-      "Keep guest count firm before final payment so the cooking pace and setup are matched to the group.",
+      "Keep guest count firm before the event so the cooking pace and setup are matched to the group.",
     ],
     localFaqs: [
       {

@@ -12,10 +12,11 @@ export default function ServiceAreas() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-4">
-          Where We Bring the Fire
+          Where We Serve
         </h2>
         <p className="text-center text-[#ddc1b0] mb-16 text-lg">
-          We are rapidly expanding across the Eastern Seaboard. If you&rsquo;re in these states, we&rsquo;re ready to serve you!
+          We serve select markets across the East Coast and Florida. Browse your local menu and
+          pricing below.
         </p>
 
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -44,7 +45,7 @@ export default function ServiceAreas() {
                 rel="noopener noreferrer"
                 className="btn-primary"
               >
-                BOOK ONLINE NOW
+                OPEN ACUITY
               </a>
             </div>
           </div>

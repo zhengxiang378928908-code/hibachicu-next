@@ -4,23 +4,23 @@ export default function WhyChoose() {
   const reasons = [
     {
       image: "/images/gallery3.jpg",
-      title: "Unforgettable Hibachi Party",
-      desc: "Live chef performance, fire show, jokes and interaction that keep guests engaged.",
+      title: "Dinner and Entertainment in One",
+      desc: "Live chef performance, fire show, and guest interaction keep the whole table engaged.",
     },
     {
       image: "/images/gallery4.jpg",
-      title: "Why Hibachi Works at Home",
-      desc: "No restaurant wait, no travel hassle. Enjoy a private dining experience in your own space.",
+      title: "Restaurant Experience at Home",
+      desc: "Skip reservations and travel. Enjoy a private hibachi dinner in your own space.",
     },
     {
       image: "/images/gallery5.jpg",
-      title: "Fresh & Customizable Menu",
-      desc: "Choose from chicken, steak, shrimp, salmon, lobster, and vegetarian options — all cooked to order.",
+      title: "Cooked Fresh for Your Group",
+      desc: "Choose from chicken, steak, shrimp, salmon, lobster, and vegetarian options, all cooked to order.",
     },
     {
       image: "/images/gallery6.jpg",
-      title: "Zero Setup, Zero Cleanup",
-      desc: "We bring everything and handle the cleanup. All you have to do is enjoy the show and the food.",
+      title: "We Handle Setup and Cleanup",
+      desc: "We bring the setup, cook on-site, and handle cleanup so you can enjoy the event.",
     },
   ];
 
@@ -28,7 +28,7 @@ export default function WhyChoose() {
     <section className="py-24" style={{ background: "var(--color-surface)" }}>
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-16">
-          Why Choose Hibachi CU?
+          Why Hosts Book Hibachi CU
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
