@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 import { siteConfig } from "@/lib/site";
+import FireEmbers from "@/components/FireEmbers";
 import "./globals.css";
 
 const GA_ID = "G-J9P2GCK3DZ";
@@ -95,7 +96,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <FireEmbers />
+        {children}
+      </body>
     </html>
   );
 }
