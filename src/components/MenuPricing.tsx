@@ -7,7 +7,7 @@ export default function MenuPricing() {
     { name: "Shrimp Hibachi", tag: "Popular" },
     { name: "Jumbo Shrimp", tag: "Fresh Catch" },
     { name: "Fresh Atlantic Salmon", tag: "Seasonal" },
-    { name: "Grilled Winter Lobster Tail", tag: "Luxury Upgrade" },
+    { name: "Lobster Tail", tag: "Luxury" },
   ];
 
   return (
@@ -29,9 +29,9 @@ export default function MenuPricing() {
             </div>
             <ul className="space-y-6">
               {menuItems.map((item) => (
-                <li key={item.name} className="flex items-center justify-between border-b border-white/5 pb-4 group">
+                <li key={item.name} className="flex items-center justify-between gap-3 border-b border-white/5 pb-4 group">
                   <span className="text-base font-medium text-white/90 group-hover:text-white transition-colors">{item.name}</span>
-                  <span className="text-[#ffb786] text-xs font-bold tracking-widest bg-[#ffb786]/10 px-3 py-1 rounded-full border border-[#ffb786]/20">{item.tag}</span>
+                  <span className="text-[#ffb786] text-xs font-bold tracking-widest bg-[#ffb786]/10 px-3 py-1 rounded-full border border-[#ffb786]/20 shrink-0 whitespace-nowrap">{item.tag}</span>
                 </li>
               ))}
             </ul>
