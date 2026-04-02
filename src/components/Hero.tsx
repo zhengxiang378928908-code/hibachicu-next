@@ -45,6 +45,14 @@ export default function Hero() {
             ✨ Private Chef · Live Cooking · Backyard Parties · Vacation Rentals
           </p>
 
+          <div className="flex items-center gap-6 mb-10 text-sm text-white/70">
+            <span className="flex items-center gap-2"><span className="text-[#ffb786] font-bold text-lg">2000+</span> Events Served</span>
+            <span className="w-px h-5 bg-white/20" />
+            <span className="flex items-center gap-2"><span className="text-[#ffb786] font-bold text-lg">Est.</span> 2022</span>
+            <span className="w-px h-5 bg-white/20" />
+            <span className="flex items-center gap-2"><span className="text-[#e9c400]">★★★★★</span> Rated</span>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-4">
             <BookNowLink className="btn-primary text-center">BOOK NOW</BookNowLink>
             <Link
