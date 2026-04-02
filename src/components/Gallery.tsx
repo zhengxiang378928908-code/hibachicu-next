@@ -151,7 +151,7 @@ export default function Gallery() {
       return;
     }
 
-    if (deltaY > 90 && Math.abs(deltaY) > Math.abs(deltaX)) {
+    if (Math.abs(deltaY) > 120 && Math.abs(deltaY) > Math.abs(deltaX) * 1.5) {
       closeLightbox();
     }
   };
@@ -159,21 +159,21 @@ export default function Gallery() {
   return (
     <section id="gallery" className="py-24" style={{ background: "var(--color-surface)" }}>
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-4">
+        <h2 className="text-4xl font-bold text-center mb-4 text-white">
           Photos & Videos
         </h2>
 
-        <p className="text-center text-[#ddc1b0] mb-12 text-lg">
+        <p className="text-center text-[#ddc1b0] mb-12 text-lg max-w-2xl mx-auto">
           See past hibachi parties, chef performances, and at-home event setups.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-auto grid-flow-dense">
           {items.map((item, i) =>
             item.type === "video" ? (
               <button
                 key={i}
                 type="button"
-                className="relative aspect-[9/16] overflow-hidden rounded-lg bg-[#131f38] row-span-2 cursor-pointer group text-left"
+                className="relative aspect-[9/16] overflow-hidden rounded-xl bg-[#131f38] row-span-2 cursor-pointer group text-left shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ring-1 ring-white/5"
                 onClick={() => setSelectedIdx(i)}
                 aria-label={`Open video: ${item.title}`}
               >
@@ -181,26 +181,29 @@ export default function Gallery() {
                   src={item.src}
                   preload="metadata"
                   poster={posters.get(i) || undefined}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   playsInline
+                  loop
                   muted
+                  onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+                  onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">
-                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors duration-300">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(0,0,0,0.3)] border border-white/10">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-white ml-1 filter drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
-                  <span className="text-sm font-medium text-white/90">{item.title}</span>
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                  <span className="text-sm md:text-base font-semibold text-white drop-shadow-md">{item.title}</span>
                 </div>
               </button>
             ) : (
               <button
                 key={i}
                 type="button"
-                className="relative aspect-[4/3] overflow-hidden rounded-lg group cursor-pointer"
+                className="relative aspect-[4/3] overflow-hidden rounded-xl group cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ring-1 ring-white/5"
                 onClick={() => setSelectedIdx(i)}
                 aria-label={`Open image: ${item.alt}`}
               >
@@ -208,10 +211,10 @@ export default function Gallery() {
                   src={item.src}
                   alt={item.alt}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </button>
             )
           )}
@@ -222,119 +225,137 @@ export default function Gallery() {
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
-            aria-label={
-              selectedItem.type === "video" ? selectedItem.title : selectedItem.alt
-            }
+            aria-label={selectedItem.type === "video" ? selectedItem.title : selectedItem.alt}
             tabIndex={-1}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020814]/92 px-4 py-8"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#020611]/95 backdrop-blur-2xl transition-all duration-300"
             onClick={closeLightbox}
           >
-            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between px-4 pb-3 pt-4 md:px-6">
-              <p className="pointer-events-auto rounded-full bg-[#ffffff12] px-4 py-2 text-sm font-semibold text-[#f5dcc8] shadow-[0_12px_30px_rgba(0,0,0,0.22)]">
-                {selectedPosition} / {items.length}
-              </p>
+            {/* Top Bar Navigation (Desktop) */}
+            <div className="absolute top-0 inset-x-0 z-[110] hidden md:flex items-center justify-between p-6 bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+              <div className="pointer-events-auto flex items-center gap-4">
+                <span className="rounded-full bg-white/10 backdrop-blur-md px-4 py-2 text-sm font-medium text-white/90 shadow-lg border border-white/10">
+                  {selectedPosition} / {items.length}
+                </span>
+                <p className="max-w-xl truncate text-lg font-medium text-white/90 drop-shadow-lg">
+                  {selectedItem.type === "video" ? selectedItem.title : selectedItem.alt}
+                </p>
+              </div>
               <button
                 type="button"
-                className="pointer-events-auto rounded-full bg-[#ffffff16] px-4 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition-colors hover:bg-[#ffffff24]"
+                className="pointer-events-auto rounded-full bg-white/10 backdrop-blur-md px-5 py-2.5 text-sm font-semibold tracking-wider text-white shadow-lg transition-all hover:bg-white/20 hover:scale-105 border border-white/10 flex items-center gap-2 uppercase"
                 onClick={closeLightbox}
                 aria-label="Close gallery preview"
               >
-                CLOSE
+                <span>Close</span>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Top Bar Navigation (Mobile) */}
+            <div className="absolute top-4 right-4 z-[110] md:hidden">
+              <button
+                type="button"
+                className="pointer-events-auto rounded-full bg-black/60 backdrop-blur-md p-3 text-white shadow-lg transition-all active:scale-95 border border-white/10"
+                onClick={closeLightbox}
+                aria-label="Close gallery preview"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
             </div>
 
+            {/* Desktop Previous/Next Navigation */}
             <button
               type="button"
-              className="absolute left-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white/12 p-3 text-white transition-colors hover:bg-white/20 md:left-6 md:block"
-              onClick={(event) => {
-                event.stopPropagation();
-                showPrev();
-              }}
+              className="absolute left-6 top-1/2 z-[110] -translate-y-1/2 rounded-full bg-white/10 backdrop-blur-md p-4 text-white hover:bg-white/20 transition-all shadow-lg border border-white/10 hidden md:block"
+              onClick={(e) => { e.stopPropagation(); showPrev(); }}
               aria-label="Previous media"
             >
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M15 18l-6-6 6-6" />
+              <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="absolute right-6 top-1/2 z-[110] -translate-y-1/2 rounded-full bg-white/10 backdrop-blur-md p-4 text-white hover:bg-white/20 transition-all shadow-lg border border-white/10 hidden md:block"
+              onClick={(e) => { e.stopPropagation(); showNext(); }}
+              aria-label="Next media"
+            >
+              <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </button>
 
+            {/* Media Container */}
             <div
-              className="relative w-full max-w-5xl"
+              className="relative w-full h-full flex items-center justify-center md:p-24 pb-28 pt-16 md:pb-24 px-0"
               onClick={(event) => event.stopPropagation()}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
-              <div className="overflow-hidden rounded-2xl bg-[#0b1323] shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+              <div className="relative w-full h-full flex items-center justify-center max-w-7xl mx-auto">
                 {selectedItem.type === "video" ? (
                   <video
-                    key={selectedItem.src}
+                    key={`video-${selectedIdx}`}
                     src={selectedItem.src}
                     poster={selectedIdx === null ? undefined : posters.get(selectedIdx)}
-                    className="max-h-[80vh] w-full bg-black object-contain"
+                    className="max-h-full max-w-full w-auto h-auto object-contain md:rounded-xl shadow-2xl md:ring-1 ring-white/10"
                     controls
                     autoPlay
                     playsInline
                   />
                 ) : (
-                  <button
-                    type="button"
-                    className="relative block h-[80vh] w-full cursor-zoom-out"
-                    onClick={closeLightbox}
-                    aria-label="Close image preview"
-                  >
+                  <div className="relative w-full h-full flex items-center justify-center cursor-zoom-out" onClick={closeLightbox}>
                     <Image
+                      key={`img-${selectedIdx}`}
                       src={selectedItem.src}
                       alt={selectedItem.alt}
                       fill
-                      className="object-contain"
+                      className="object-contain md:rounded-xl shadow-none md:shadow-2xl"
                       sizes="100vw"
+                      quality={90}
                       priority
                     />
-                  </button>
+                  </div>
                 )}
-              </div>
-
-              <div className="mt-4 flex items-center justify-between gap-4 text-sm text-[#ddc1b0]">
-                <p className="max-w-3xl">
-                  {selectedItem.type === "video" ? selectedItem.title : selectedItem.alt}
-                </p>
-                <p className="hidden whitespace-nowrap text-[#ffb786] md:block">
-                  {selectedPosition} / {items.length}
-                </p>
-              </div>
-
-              <div className="mt-4 flex items-center justify-center gap-3 md:hidden">
-                <button
-                  type="button"
-                  className="rounded-full bg-white/12 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
-                  onClick={showPrev}
-                  aria-label="Previous media"
-                >
-                  Prev
-                </button>
-                <button
-                  type="button"
-                  className="rounded-full bg-white/12 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
-                  onClick={showNext}
-                  aria-label="Next media"
-                >
-                  Next
-                </button>
               </div>
             </div>
 
-            <button
-              type="button"
-              className="absolute right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white/12 p-3 text-white transition-colors hover:bg-white/20 md:right-6 md:block"
-              onClick={(event) => {
-                event.stopPropagation();
-                showNext();
-              }}
-              aria-label="Next media"
-            >
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
+            {/* Mobile Bottom Navigation */}
+            <div className="md:hidden absolute bottom-0 inset-x-0 z-[110] px-4 pb-8 pt-12 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col items-center gap-4 pointer-events-none">
+              <p className="text-center text-sm font-medium text-white/95 drop-shadow-lg px-2 line-clamp-2 pb-2">
+                {selectedItem.type === "video" ? selectedItem.title : selectedItem.alt}
+              </p>
+              <div className="flex items-center justify-center gap-8 w-full pointer-events-auto">
+                <button
+                  type="button"
+                  className="p-3.5 bg-white/10 backdrop-blur-md rounded-full text-white shadow-[0_8px_30px_rgba(0,0,0,0.5)] active:scale-95 transition-transform border border-white/5"
+                  onClick={(e) => { e.stopPropagation(); showPrev(); }}
+                  aria-label="Previous media"
+                >
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <span className="text-white/90 text-xs font-bold tracking-widest bg-black/40 px-5 py-2 rounded-full backdrop-blur-md border border-white/10">
+                  {selectedPosition} / {items.length}
+                </span>
+                <button
+                  type="button"
+                  className="p-3.5 bg-white/10 backdrop-blur-md rounded-full text-white shadow-[0_8px_30px_rgba(0,0,0,0.5)] active:scale-95 transition-transform border border-white/5"
+                  onClick={(e) => { e.stopPropagation(); showNext(); }}
+                  aria-label="Next media"
+                >
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
           </div>
         ) : null}
       </div>
