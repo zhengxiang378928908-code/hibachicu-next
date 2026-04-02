@@ -17,28 +17,36 @@ export default function MenuPricing() {
           Our Menu
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16 relative">
+          {/* Background glow effects */}
+          <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#f58220]/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#ffb786]/10 rounded-full blur-[100px] pointer-events-none" />
+
           {/* Menu Items */}
-          <div className="bg-[#131f38] rounded-lg p-8">
-            <h3 className="text-2xl font-bold mb-8">Our Menu</h3>
-            <ul className="space-y-5">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:-translate-y-2 transition-transform duration-500">
+            <div className="flex items-center gap-3 mb-8">
+               <h3 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Our Menu</h3>
+            </div>
+            <ul className="space-y-6">
               {menuItems.map((item) => (
-                <li key={item.name} className="flex items-center justify-between">
-                  <span className="text-sm font-medium">{item.name}</span>
-                  <span className="text-[#e9c400] text-xs font-bold tracking-wider">{item.tag}</span>
+                <li key={item.name} className="flex items-center justify-between border-b border-white/5 pb-4 group">
+                  <span className="text-base font-medium text-white/90 group-hover:text-white transition-colors">{item.name}</span>
+                  <span className="text-[#ffb786] text-xs font-bold tracking-widest bg-[#ffb786]/10 px-3 py-1 rounded-full border border-[#ffb786]/20">{item.tag}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-[#ddc1b0]/60 text-xs italic">
+            <p className="mt-8 text-[#ddc1b0]/70 text-sm italic border-l-2 border-[#ffb786]/30 pl-4 leading-relaxed">
               * All entrees served with Fried Rice, Sauteed Vegetables,
               and Our House Dipping Sauces.
             </p>
           </div>
 
           {/* Pricing Info */}
-          <div className="bg-[#131f38] rounded-lg p-8">
-            <h3 className="text-2xl font-bold mb-8">Pricing Details</h3>
-            <ul className="space-y-5">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:-translate-y-2 transition-transform duration-500">
+            <div className="flex items-center gap-3 mb-8">
+               <h3 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Pricing Details</h3>
+            </div>
+            <ul className="space-y-6">
               {[
                 {
                   icon: "check_circle",
@@ -59,18 +67,20 @@ export default function MenuPricing() {
                   text: "The remaining balance is collected after the event.",
                 },
               ].map((item) => (
-                <li key={item.text} className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-[#e9c400] text-sm mt-0.5">{item.icon}</span>
-                  <span className="text-sm text-[#ddc1b0]">{item.text}</span>
+                <li key={item.text} className="flex items-start gap-4 group">
+                  <div className="min-w-[28px] h-7 rounded-full bg-[#ffb786]/10 flex items-center justify-center mt-0.5 group-hover:bg-[#ffb786]/20 transition-colors border border-[#ffb786]/20">
+                    <span className="material-symbols-outlined text-[#ffb786] text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>{item.icon}</span>
+                  </div>
+                  <span className="text-base text-white/80 leading-relaxed group-hover:text-white transition-colors">{item.text}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
+            <div className="mt-10 text-center">
               <Link
                 href="/menu"
-                className="block text-center bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400] font-bold px-6 py-3 rounded-full text-xs tracking-widest hover:shadow-[0_0_20px_rgba(245,130,32,0.4)] transition-all"
+                className="btn-primary w-full"
               >
-                VIEW MENU
+                VIEW FULL MENU
               </Link>
             </div>
           </div>

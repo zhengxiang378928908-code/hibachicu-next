@@ -21,17 +21,26 @@ export default function Booking() {
           </p>
 
           {/* Quick contact option */}
-          <div className="bg-[#131f38] rounded-lg p-6 mb-10">
-            <p className="text-[#ddc1b0] text-sm mb-4">
-              Have questions? Call or text us — we reply in minutes.
-            </p>
-            <a
-              href={siteConfig.phoneHref}
-              className="inline-flex items-center gap-3 bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400] font-bold px-8 py-4 rounded-full text-sm tracking-widest hover:shadow-[0_0_20px_rgba(245,130,32,0.4)] transition-all"
-            >
-              <span className="material-symbols-outlined text-lg">call</span>
-              CALL NOW: {siteConfig.phoneDisplay}
-            </a>
+          <div className="relative group mx-auto max-w-lg mb-10">
+            {/* Animated glowing border effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#ffb786] via-[#f58220] to-[#ffb786] rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-[pulse_3s_cubic-bezier(0.4,0,0.6,1)_infinite]" />
+            
+            <div className="relative bg-[#131f38]/90 backdrop-blur-md rounded-2xl p-8 border border-[#ffb786]/20 flex flex-col items-center text-center shadow-2xl">
+              <span className="material-symbols-outlined text-[#ffb786] text-4xl mb-3" style={{ animation: 'bounce 2s infinite' }}>support_agent</span>
+              <p className="text-white/90 text-lg mb-2 font-semibold tracking-wide">
+                Have questions or special requests?
+              </p>
+              <p className="text-[#ffb786]/80 text-sm mb-8 font-medium">
+                Call or text us — we reply in minutes.
+              </p>
+              <a
+                href={siteConfig.phoneHref}
+                className="btn-primary w-full shadow-[0_0_20px_rgba(245,130,32,0.3)]"
+              >
+                <span className="material-symbols-outlined text-xl mr-1">call</span>
+                {siteConfig.phoneDisplay}
+              </a>
+            </div>
           </div>
 
           <div className="flex items-center gap-4 mb-10">
