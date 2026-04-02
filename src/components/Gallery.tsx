@@ -76,7 +76,7 @@ export default function Gallery() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleVideoToggle = (idx: number) => {
+  const handleVideoToggle = async (idx: number) => {
     const video = videoRefs.current.get(idx);
     if (!video) return;
 
@@ -88,8 +88,12 @@ export default function Gallery() {
         const prev = videoRefs.current.get(playingIdx);
         prev?.pause();
       }
-      video.play();
-      setPlayingIdx(idx);
+      try {
+        await video.play();
+        setPlayingIdx(idx);
+      } catch (error) {
+        console.error("Video playback failed", error);
+      }
     }
   };
 
@@ -116,7 +120,7 @@ export default function Gallery() {
                   ref={(el) => {
                     if (el) videoRefs.current.set(i, el);
                   }}
-                  src={item.src + "#t=0.5"}
+                  src={item.src}
                   preload="metadata"
                   poster={posters.get(i) || undefined}
                   className="w-full h-full object-cover"
