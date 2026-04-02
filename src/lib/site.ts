@@ -1,6 +1,10 @@
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hibachicu.com").replace(/\/$/, "");
+const directReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL?.trim() ?? "";
+const reviewSearchUrl = `https://www.google.com/search?q=${encodeURIComponent("Hibachi CU reviews")}`;
+
 export const siteConfig = {
   name: "Hibachi CU",
-  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hibachicu.com").replace(/\/$/, ""),
+  siteUrl,
   title: "Mobile Hibachi Catering & Private Hibachi Chef at Home",
   description:
     "Mobile hibachi catering for backyard parties, birthdays, vacation rentals, and private events. Book a private hibachi chef at home with live cooking and transparent pricing.",
@@ -10,6 +14,8 @@ export const siteConfig = {
   phoneDisplay: "6462093047",
   email: "hibachicu@gmail.com",
   ogImage: "/opengraph-image",
+  directReviewUrl,
+  reviewSearchUrl,
   serviceAreas: [
     "Pennsylvania",
     "New York",
@@ -28,4 +34,12 @@ export const siteConfig = {
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.siteUrl).toString();
+}
+
+export function getReviewDestination() {
+  return siteConfig.directReviewUrl || siteConfig.reviewSearchUrl;
+}
+
+export function hasDirectReviewUrl() {
+  return siteConfig.directReviewUrl.length > 0;
 }

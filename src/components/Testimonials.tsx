@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { getReviewDestination } from "@/lib/site";
+
 export default function Testimonials() {
   const reviews = [
     {
@@ -60,6 +62,12 @@ export default function Testimonials() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <a href={getReviewDestination()} className="btn-primary">
+            LEAVE A REVIEW
+          </a>
         </div>
       </div>
     </section>
