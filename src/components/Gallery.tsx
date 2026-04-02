@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, type TouchEvent } from "react";
 import Image from "next/image";
 
 type MediaItem =
@@ -11,6 +11,7 @@ export default function Gallery() {
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
   const [posters, setPosters] = useState<Map<number, string>>(new Map());
   const dialogRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const items: MediaItem[] = [
     { type: "video", src: "/videos/62_1767297847.mp4", title: "Fire Performance" },
@@ -125,6 +126,36 @@ export default function Gallery() {
   const selectedItem = selectedIdx === null ? null : items[selectedIdx];
   const selectedPosition = selectedIdx === null ? null : selectedIdx + 1;
 
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    if (!touchStartRef.current) {
+      return;
+    }
+
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+
+    touchStartRef.current = null;
+
+    if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX > 0) {
+        showPrev();
+      } else {
+        showNext();
+      }
+      return;
+    }
+
+    if (deltaY > 90 && Math.abs(deltaY) > Math.abs(deltaX)) {
+      closeLightbox();
+    }
+  };
+
   return (
     <section id="gallery" className="py-24" style={{ background: "var(--color-surface)" }}>
       <div className="max-w-7xl mx-auto px-6">
@@ -198,18 +229,23 @@ export default function Gallery() {
             className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020814]/92 px-4 py-8"
             onClick={closeLightbox}
           >
-            <button
-              type="button"
-              className="absolute right-4 top-4 rounded-full bg-white/12 px-3 py-2 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-white/20"
-              onClick={closeLightbox}
-              aria-label="Close gallery preview"
-            >
-              CLOSE
-            </button>
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between px-4 pb-3 pt-4 md:px-6">
+              <p className="pointer-events-auto rounded-full bg-[#ffffff12] px-4 py-2 text-sm font-semibold text-[#f5dcc8] shadow-[0_12px_30px_rgba(0,0,0,0.22)]">
+                {selectedPosition} / {items.length}
+              </p>
+              <button
+                type="button"
+                className="pointer-events-auto rounded-full bg-[#ffffff16] px-4 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition-colors hover:bg-[#ffffff24]"
+                onClick={closeLightbox}
+                aria-label="Close gallery preview"
+              >
+                CLOSE
+              </button>
+            </div>
 
             <button
               type="button"
-              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/12 p-3 text-white transition-colors hover:bg-white/20 md:left-6"
+              className="absolute left-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white/12 p-3 text-white transition-colors hover:bg-white/20 md:left-6 md:block"
               onClick={(event) => {
                 event.stopPropagation();
                 showPrev();
@@ -224,6 +260,8 @@ export default function Gallery() {
             <div
               className="relative w-full max-w-5xl"
               onClick={(event) => event.stopPropagation()}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
             >
               <div className="overflow-hidden rounded-2xl bg-[#0b1323] shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
                 {selectedItem.type === "video" ? (
@@ -237,7 +275,12 @@ export default function Gallery() {
                     playsInline
                   />
                 ) : (
-                  <div className="relative h-[80vh] w-full">
+                  <button
+                    type="button"
+                    className="relative block h-[80vh] w-full cursor-zoom-out"
+                    onClick={closeLightbox}
+                    aria-label="Close image preview"
+                  >
                     <Image
                       src={selectedItem.src}
                       alt={selectedItem.alt}
@@ -246,7 +289,7 @@ export default function Gallery() {
                       sizes="100vw"
                       priority
                     />
-                  </div>
+                  </button>
                 )}
               </div>
 
@@ -254,15 +297,34 @@ export default function Gallery() {
                 <p className="max-w-3xl">
                   {selectedItem.type === "video" ? selectedItem.title : selectedItem.alt}
                 </p>
-                <p className="whitespace-nowrap text-[#ffb786]">
+                <p className="hidden whitespace-nowrap text-[#ffb786] md:block">
                   {selectedPosition} / {items.length}
                 </p>
+              </div>
+
+              <div className="mt-4 flex items-center justify-center gap-3 md:hidden">
+                <button
+                  type="button"
+                  className="rounded-full bg-white/12 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+                  onClick={showPrev}
+                  aria-label="Previous media"
+                >
+                  Prev
+                </button>
+                <button
+                  type="button"
+                  className="rounded-full bg-white/12 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+                  onClick={showNext}
+                  aria-label="Next media"
+                >
+                  Next
+                </button>
               </div>
             </div>
 
             <button
               type="button"
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/12 p-3 text-white transition-colors hover:bg-white/20 md:right-6"
+              className="absolute right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white/12 p-3 text-white transition-colors hover:bg-white/20 md:right-6 md:block"
               onClick={(event) => {
                 event.stopPropagation();
                 showNext();
