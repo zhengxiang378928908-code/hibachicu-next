@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import BookNowLink from "@/components/BookNowLink";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -139,9 +140,7 @@ export default function MenuPage() {
           <p className="text-[#ffb786] text-4xl font-bold font-serif mb-8">
             <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
           </p>
-          <Link href="/#booking" className="btn-primary">
-            BOOK NOW
-          </Link>
+          <BookNowLink className="btn-primary">BOOK NOW</BookNowLink>
           <p className="mt-4 text-xs text-[#ddc1b0]/50">
             Prefer Acuity directly?{" "}
             <a

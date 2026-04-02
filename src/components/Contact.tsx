@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import BookNowLink from "@/components/BookNowLink";
 import { siteConfig } from "@/lib/site";
 
 export default function Contact() {
@@ -22,9 +21,7 @@ export default function Contact() {
           <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/#booking" className="btn-primary text-center">
-            BOOK NOW
-          </Link>
+          <BookNowLink className="btn-primary text-center">BOOK NOW</BookNowLink>
           <a
             href={siteConfig.bookingUrl}
             target="_blank"

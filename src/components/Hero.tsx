@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import BookNowLink from "@/components/BookNowLink";
+
 export default function Hero() {
   return (
     <section
@@ -42,9 +44,7 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/#booking" className="btn-primary text-center">
-              BOOK NOW
-            </Link>
+            <BookNowLink className="btn-primary text-center">BOOK NOW</BookNowLink>
             <Link
               href="/menu"
               className="btn-secondary text-center"

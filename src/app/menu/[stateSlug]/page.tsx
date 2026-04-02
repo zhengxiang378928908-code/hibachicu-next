@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import BookNowLink from "@/components/BookNowLink";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getMenuCitiesForState } from "@/lib/menu-cities";
@@ -360,9 +361,7 @@ export default async function StateMenuPage({ params }: StateMenuPageProps) {
           <p className="mb-10 font-serif text-5xl font-bold text-[#ffb786]">
             <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
           </p>
-          <Link href="/#booking" className="btn-primary">
-            BOOK NOW
-          </Link>
+          <BookNowLink className="btn-primary">BOOK NOW</BookNowLink>
           <p className="mt-4 text-xs text-[#ddc1b0]/50">
             Prefer Acuity directly?{" "}
             <a

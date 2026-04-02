@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import BookNowLink from "@/components/BookNowLink";
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -114,12 +116,11 @@ export default function Header() {
           ))}
         </div>
 
-        <Link
-          href="/#booking"
+        <BookNowLink
           className="hidden md:inline-block bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400] font-bold px-6 py-2.5 rounded-full text-xs tracking-widest hover:scale-105 active:scale-95 transition-all duration-300"
         >
           BOOK NOW
-        </Link>
+        </BookNowLink>
 
         {/* Mobile Toggle */}
         <button
@@ -148,13 +149,12 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/#booking"
+          <BookNowLink
             className="mt-4 block text-center bg-gradient-to-br from-[#ffb786] to-[#f58220] text-[#502400] font-bold px-6 py-3 rounded-full text-xs tracking-widest"
             onClick={() => setMenuOpen(false)}
           >
             BOOK NOW
-          </Link>
+          </BookNowLink>
         </nav>
       )}
     </header>
