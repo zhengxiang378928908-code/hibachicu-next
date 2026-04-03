@@ -170,7 +170,7 @@ export default function Gallery() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-[250px]">
           {items.slice(0, 5).map((item, i) => {
             const isFeatured = i === 0;
-            const containerClass = `relative overflow-hidden rounded-2xl bg-[#131f38] cursor-pointer group text-left shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ring-1 ring-white/10 ${
+            const containerClass = `relative overflow-hidden rounded-xl bg-stone-900 cursor-pointer group text-left shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_30px_rgba(255,90,0,0.25)] hover:scale-[1.02] transition-all duration-300 border-[6px] border-[#fdf8f5] ${i % 3 === 0 ? '-rotate-1' : (i % 2 === 0 ? 'rotate-1' : 'rotate-0')} ${
               isFeatured ? "sm:col-span-2 sm:row-span-2" : "col-span-1 row-span-1"
             }`;
 

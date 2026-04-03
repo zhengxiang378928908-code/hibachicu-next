@@ -12,9 +12,9 @@ export default function FAQ() {
           {faqs.map((faq) => (
             <details
               key={faq.q}
-              className="rounded-lg overflow-hidden bg-[#131f38] group"
+              className="rounded-lg overflow-hidden bg-[#332a26] group"
             >
-              <summary className="flex items-center justify-between px-6 py-5 text-left hover:bg-[#1e2a43] transition-colors cursor-pointer">
+              <summary className="flex items-center justify-between px-6 py-5 text-left hover:bg-[#443833] transition-colors cursor-pointer">
                 <span className="text-[15px] font-medium pr-4">{faq.q}</span>
                 <span className="material-symbols-outlined text-[#ffb786] text-xl flex-shrink-0 group-open:rotate-180 transition-transform duration-300">
                   expand_more

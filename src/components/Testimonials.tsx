@@ -24,13 +24,13 @@ export default function Testimonials() {
   return (
     <section
       className="py-24"
-      style={{ background: "var(--color-surface-container-low)" }}
+      style={{ background: "#fdf8f5" }}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-4 italic">
+        <h2 className="text-4xl font-bold text-center mb-4 italic text-[#1a1512]">
           &ldquo;A Night We&rsquo;ll Never Forget&rdquo;
         </h2>
-        <p className="text-center text-[#ddc1b0] mb-16 text-lg">
+        <p className="text-center text-[#574843] mb-16 text-lg font-medium">
           Real guest reviews from past hibachi events
         </p>
 
@@ -38,14 +38,14 @@ export default function Testimonials() {
           {reviews.map((review, i) => (
             <div
               key={i}
-              className="bg-[#131f38] rounded-lg p-8 hover:bg-[#1e2a43] transition-all duration-300"
+              className="bg-white rounded-xl p-8 shadow-xl transition-all duration-300 hover:z-10 hover:scale-105 odd:-rotate-1 even:rotate-1 border border-[#e0d5cf]"
             >
               <div className="flex items-center gap-1 mb-6">
                 {[...Array(5)].map((_, j) => (
                   <span key={j} className="text-[#e9c400] text-lg">★</span>
                 ))}
               </div>
-              <p className="text-[#ddc1b0] text-[15px] leading-relaxed mb-8 italic">
+              <p className="text-[#332a26] text-[15px] leading-relaxed mb-8 italic font-medium">
                 &ldquo;{review.text}&rdquo;
               </p>
               <div className="flex items-center gap-3">
@@ -56,8 +56,8 @@ export default function Testimonials() {
                   height={20}
                 />
                 <div>
-                  <p className="text-[#ffb786] font-semibold text-sm">- {review.name}</p>
-                  <p className="text-[#ddc1b0]/60 text-xs">{review.location}</p>
+                  <p className="text-[#e64a00] font-bold text-sm">- {review.name}</p>
+                  <p className="text-[#574843] text-xs font-semibold">{review.location}</p>
                 </div>
               </div>
             </div>

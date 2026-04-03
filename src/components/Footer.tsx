@@ -81,7 +81,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-[#29344e]/50">
+      <div className="border-t border-[#574843]/50">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center text-[#ddc1b0]/40 text-xs">
           <p>&copy; {new Date().getFullYear()} Hibachi CU. All rights reserved.</p>
         </div>

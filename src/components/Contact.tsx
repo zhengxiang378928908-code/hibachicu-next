@@ -7,7 +7,7 @@ export default function Contact() {
       id="contact"
       className="py-24"
       style={{
-        background: "linear-gradient(135deg, #0f1b34 0%, #131f38 50%, #1e2a43 100%)",
+        background: "linear-gradient(135deg, #261f1c 0%, #332a26 50%, #443833 100%)",
       }}
     >
       <div className="max-w-3xl mx-auto px-6 text-center">

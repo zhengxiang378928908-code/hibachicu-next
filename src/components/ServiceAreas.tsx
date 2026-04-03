@@ -27,7 +27,7 @@ export default function ServiceAreas() {
                 <Link
                   key={state.slug}
                   href={`/menu/${state.slug}`}
-                  className="flex items-center justify-center gap-2 rounded-lg bg-[#131f38] px-4 py-3 text-sm font-medium transition-all duration-300 hover:bg-[#1e2a43] hover:text-[#ffb786]"
+                  className="flex items-center justify-center gap-2 rounded-lg bg-[#332a26] px-4 py-3 text-sm font-medium transition-all duration-300 hover:bg-[#443833] hover:text-[#ffb786]"
                 >
                   <span className="text-sm">{state.name}</span>
                 </Link>

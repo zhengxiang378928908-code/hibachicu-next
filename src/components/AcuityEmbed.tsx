@@ -27,7 +27,7 @@ export default function AcuityEmbed() {
     <div className="relative w-full">
       {!loaded && (
         <div
-          className="flex items-center justify-center rounded-lg bg-[#131f38] animate-pulse"
+          className="flex items-center justify-center rounded-lg bg-[#332a26] animate-pulse"
           style={{ minHeight: 680 }}
         >
           <span className="material-symbols-outlined text-[#ffb786]/30 text-5xl animate-spin">

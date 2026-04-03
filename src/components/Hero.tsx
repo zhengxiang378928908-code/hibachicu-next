@@ -20,8 +20,8 @@ export default function Hero() {
         >
           <source src="/videos/73_1767297969.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06132b] via-[#06132b]/50 to-black/30" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#06132b]/20 to-[#06132b]/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1512] via-[#1a1512]/50 to-black/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#1a1512]/20 to-[#1a1512]/80" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-20">

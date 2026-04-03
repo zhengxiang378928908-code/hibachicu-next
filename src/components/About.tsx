@@ -75,7 +75,7 @@ export default function About() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-[#131f38] rounded-lg p-6 max-w-[280px] hidden lg:block">
+            <div className="absolute -bottom-6 -left-6 bg-[#332a26] rounded-lg p-6 max-w-[280px] hidden lg:block">
               <p className="text-[#ffb786] text-sm italic font-serif">
                 &ldquo;The grill is our stage, and you&rsquo;re in the front row.&rdquo;
               </p>

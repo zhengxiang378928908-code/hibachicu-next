@@ -90,7 +90,7 @@ export default function Header() {
       : "rounded-full px-4 py-2 text-[#ddc1b0] hover:text-[#ffb786] hover:bg-[#ffffff0d] transition-colors text-sm tracking-wide font-medium";
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#06132b]/80 backdrop-blur-xl">
+    <header className="fixed top-0 left-0 w-full z-50 bg-[#1a1512]/80 backdrop-blur-xl">
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-[72px]">
         <Link href="/" className="block shrink-0 transition-transform duration-300 hover:scale-105">
           <Image
@@ -118,7 +118,7 @@ export default function Header() {
 
         <div className="hidden md:flex items-center gap-6">
           <BookNowLink
-            className="inline-flex items-center justify-center bg-[#f58220] hover:bg-[#ffb786] text-white font-semibold px-6 py-2 rounded-full text-[13px] tracking-widest shadow-[0_4px_12px_rgba(245,130,32,0.3)] hover:shadow-[0_6px_20px_rgba(245,130,32,0.5)] transition-all duration-300"
+            className="btn-primary !px-6 !py-2.5 !text-[13px]"
           >
             BOOK NOW
           </BookNowLink>
@@ -142,15 +142,15 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <nav className="md:hidden px-6 pb-6 bg-[#06132b]/95 backdrop-blur-xl">
+        <nav className="md:hidden px-6 pb-6 bg-[#1a1512]/95 backdrop-blur-xl">
           {navItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               className={
                 isActive(item.href)
-                  ? "block py-3 text-[#ffd2ad] text-[16px] border-b border-[#29344e]/50 font-semibold bg-[#ffb786]/10 px-3 rounded-lg"
-                  : "block py-3 text-[#ddc1b0] text-[16px] border-b border-[#29344e]/50 hover:text-[#ffb786] transition-colors"
+                  ? "block py-3 text-[#ffd2ad] text-[16px] border-b border-[#574843]/50 font-semibold bg-[#ffb786]/10 px-3 rounded-lg"
+                  : "block py-3 text-[#ddc1b0] text-[16px] border-b border-[#574843]/50 hover:text-[#ffb786] transition-colors"
               }
               onClick={() => setMenuOpen(false)}
             >

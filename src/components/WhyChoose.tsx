@@ -35,7 +35,7 @@ export default function WhyChoose() {
           {reasons.map((r, i) => (
             <div
               key={i}
-              className="bg-[#131f38] rounded-lg overflow-hidden hover:bg-[#1e2a43] transition-all duration-300 group"
+              className="bg-[#332a26] rounded-lg overflow-hidden hover:bg-[#443833] transition-all duration-300 group"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
