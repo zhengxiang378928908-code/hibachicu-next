@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { getAllPosts } from "@/lib/blog";
 import { menuCities } from "@/lib/menu-cities";
 import { menuStates } from "@/lib/menu-states";
 import { absoluteUrl } from "@/lib/site";
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     "/",
     "/menu",
+    "/blog",
   ];
 
   return [
@@ -24,6 +26,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...menuCities.map((city) => ({
       url: absoluteUrl(city.path),
       changeFrequency: "weekly" as const,
+      priority: 0.6,
+    })),
+    ...getAllPosts().map((post) => ({
+      url: absoluteUrl(`/blog/${post.slug}`),
+      changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
   ];
