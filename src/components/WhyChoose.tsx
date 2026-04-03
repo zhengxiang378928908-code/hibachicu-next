@@ -4,13 +4,13 @@ export default function WhyChoose() {
   const reasons = [
     {
       image: "/images/gallery3.jpg",
-      title: "Dinner and Entertainment in One",
+      title: "A Feast and Entertainment in One",
       desc: "Live chef performance, fire show, and guest interaction keep the whole table engaged.",
     },
     {
       image: "/images/gallery4.jpg",
       title: "Restaurant Experience at Home",
-      desc: "Skip reservations and travel. Enjoy a private hibachi dinner in your own space.",
+      desc: "Skip reservations and travel. Enjoy a private hibachi experience in your own space.",
     },
     {
       image: "/images/gallery5.jpg",

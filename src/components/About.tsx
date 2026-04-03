@@ -49,7 +49,7 @@ export default function About() {
                   {[
                     "Birthday parties",
                     "Family gatherings",
-                    "Backyard dinners",
+                    "Backyard parties",
                     "Airbnb / vacation rentals",
                     "Bachelor & bachelorette parties",
                     "Corporate events",

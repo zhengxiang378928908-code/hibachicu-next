@@ -7,7 +7,7 @@ export default function Testimonials() {
     {
       name: "Olivia R.",
       location: "Stamford, CT",
-      text: "Amazing hibachi at home experience. The chef brought the full hibachi setup, cooked everything fresh, and put on a fun fire show that made the night unforgettable.",
+      text: "Amazing hibachi at home experience. The chef brought the full hibachi setup, cooked everything fresh, and put on a fun fire show that made the experience unforgettable.",
     },
     {
       name: "James T.",
@@ -28,7 +28,7 @@ export default function Testimonials() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-4 italic text-[#1a1512]">
-          &ldquo;A Night We&rsquo;ll Never Forget&rdquo;
+          &ldquo;An Experience We&rsquo;ll Never Forget&rdquo;
         </h2>
         <p className="text-center text-[#574843] mb-16 text-lg font-medium">
           Real guest reviews from past hibachi events
