@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Hibachi Menus & Pricing by State",
   description:
-    "Browse hibachi catering menus and starting pricing by state. Explore private hibachi chef service areas for Connecticut, Massachusetts, New York, Florida, and more.",
+    "Browse hibachi catering menus and starting pricing by state. Explore private hibachi chef service areas for Connecticut, Massachusetts, New York, and more.",
   alternates: {
     canonical: "/menu",
   },

@@ -28,7 +28,6 @@ export const siteConfig = {
     "Delaware",
     "Maryland",
     "Washington D.C.",
-    "Florida",
   ],
 };
 

@@ -15,7 +15,7 @@ export default function ServiceAreas() {
           Where We Serve
         </h2>
         <p className="text-center text-[#ddc1b0] mb-16 text-lg">
-          We serve select markets across the East Coast and Florida. Browse your local menu and
+          We serve select markets across the East Coast. Browse your local menu and
           pricing below.
         </p>
 
@@ -33,11 +33,6 @@ export default function ServiceAreas() {
                 </Link>
               ))}
             </div>
-
-            <p className="mt-6 text-[#ddc1b0]/60 text-xs">
-              * Florida Service: Miami, Orlando, and Tampa regions.
-            </p>
-
             <div className="mt-8">
               <a
                 href={siteConfig.bookingUrl}

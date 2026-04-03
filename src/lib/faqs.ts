@@ -13,7 +13,7 @@ export const faqs = [
   },
   {
     q: "What areas do you serve?",
-    a: "We serve Connecticut, Massachusetts, Rhode Island, Vermont, New Hampshire, New York, New Jersey, Pennsylvania, Delaware, Maryland, Washington D.C., and Florida markets including Miami, Orlando, and Tampa.",
+    a: "We serve Connecticut, Massachusetts, Rhode Island, Vermont, New Hampshire, New York, New Jersey, Pennsylvania, Delaware, Maryland, and Washington D.C.",
   },
   {
     q: "How far in advance should I book?",

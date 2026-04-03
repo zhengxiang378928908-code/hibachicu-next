@@ -36,10 +36,6 @@ function slugifySegment(value: string) {
 }
 
 function getStateLabel(state: MenuState) {
-  if (state.slug.startsWith("florida-")) {
-    return "Florida";
-  }
-
   return state.name;
 }
 
