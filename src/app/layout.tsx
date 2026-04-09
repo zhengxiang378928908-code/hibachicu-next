@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
-import { siteConfig } from "@/lib/site";
+import AttributionTracker from "@/components/AttributionTracker";
+import BookingCompletionListener from "@/components/BookingCompletionListener";
 import FireEmbers from "@/components/FireEmbers";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const GA_ID = "G-J9P2GCK3DZ";
@@ -97,6 +99,8 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <AttributionTracker />
+        <BookingCompletionListener />
         <FireEmbers />
         {children}
       </body>

@@ -1,7 +1,7 @@
+import AcuityLink from "@/components/AcuityLink";
 import Link from "next/link";
 import Image from "next/image";
 import { menuStates } from "@/lib/menu-states";
-import { siteConfig } from "@/lib/site";
 
 export default function ServiceAreas() {
   return (
@@ -34,14 +34,14 @@ export default function ServiceAreas() {
               ))}
             </div>
             <div className="mt-8">
-              <a
-                href={siteConfig.bookingUrl}
+              <AcuityLink
                 target="_blank"
                 rel="noopener noreferrer"
+                ctaName="service_areas_open_acuity"
                 className="btn-primary"
               >
                 OPEN ACUITY
-              </a>
+              </AcuityLink>
             </div>
           </div>
 

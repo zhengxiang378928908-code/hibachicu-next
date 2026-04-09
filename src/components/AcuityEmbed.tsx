@@ -2,13 +2,38 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
+import { usePathname } from "next/navigation";
+
+import AcuityLink from "@/components/AcuityLink";
+import { trackBookingEvent } from "@/lib/analytics";
+import { buildAcuityBookingUrl, persistBookingAttribution } from "@/lib/booking-attribution";
 import { siteConfig } from "@/lib/site";
 
-const EMBED_SRC = siteConfig.bookingUrl;
-
 export default function AcuityEmbed() {
-  const [loaded, setLoaded] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const trackedLoadRef = useRef(false);
+  const pathname = usePathname();
+  const search = typeof window === "undefined" ? "" : window.location.search;
+  const [loadedSrc, setLoadedSrc] = useState("");
+  const embedSrc =
+    typeof window === "undefined"
+      ? siteConfig.bookingUrl
+      : buildAcuityBookingUrl(siteConfig.bookingUrl, {
+          pathname,
+          search,
+          referrer: document.referrer,
+        });
+  const loaded = loadedSrc === embedSrc;
+
+  useEffect(() => {
+    persistBookingAttribution({
+      pathname,
+      search: window.location.search,
+      referrer: document.referrer,
+    });
+
+    trackedLoadRef.current = false;
+  }, [pathname]);
 
   useEffect(() => {
     // The Acuity embed.js script auto-resizes iframes with the
@@ -18,10 +43,22 @@ export default function AcuityEmbed() {
     const iframe = iframeRef.current;
     if (!iframe) return;
 
-    const handleLoad = () => setLoaded(true);
+    const handleLoad = () => {
+      setLoadedSrc(embedSrc);
+
+      if (trackedLoadRef.current) {
+        return;
+      }
+
+      trackedLoadRef.current = true;
+      trackBookingEvent("acuity_embed_load", {
+        cta_path: pathname,
+      });
+    };
+
     iframe.addEventListener("load", handleLoad);
     return () => iframe.removeEventListener("load", handleLoad);
-  }, []);
+  }, [embedSrc, pathname]);
 
   return (
     <div className="relative w-full">
@@ -38,11 +75,12 @@ export default function AcuityEmbed() {
 
       <iframe
         ref={iframeRef}
-        src={EMBED_SRC}
+        src={embedSrc}
         title="Book your private hibachi event"
         width="100%"
         height="800"
         frameBorder="0"
+        suppressHydrationWarning
         className={`acuity-embed-iframe rounded-lg transition-opacity duration-500 ${
           loaded ? "opacity-100" : "opacity-0 absolute inset-0"
         }`}
@@ -57,14 +95,14 @@ export default function AcuityEmbed() {
       {/* Fallback link */}
       <p className="mt-6 text-center text-[#ddc1b0]/50 text-xs">
         Having trouble?{" "}
-        <a
-          href={siteConfig.bookingUrl}
+        <AcuityLink
           target="_blank"
           rel="noopener noreferrer"
+          ctaName="booking_embed_fallback"
           className="text-[#ffb786] underline underline-offset-2 hover:text-[#f58220] transition-colors"
         >
           Open booking in a new tab
-        </a>
+        </AcuityLink>
       </p>
     </div>
   );

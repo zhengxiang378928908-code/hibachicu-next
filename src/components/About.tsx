@@ -68,7 +68,7 @@ export default function About() {
           <div className="relative">
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
               <Image
-                src="/images/gallery1.jpg"
+                src="/images/gallery20.jpg"
                 alt="Hibachi chef performing at private event"
                 fill
                 className="object-cover"

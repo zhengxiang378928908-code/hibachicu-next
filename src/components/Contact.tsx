@@ -1,3 +1,4 @@
+import AcuityLink from "@/components/AcuityLink";
 import BookNowLink from "@/components/BookNowLink";
 import { siteConfig } from "@/lib/site";
 
@@ -21,15 +22,17 @@ export default function Contact() {
           <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <BookNowLink className="btn-primary text-center">BOOK NOW</BookNowLink>
-          <a
-            href={siteConfig.bookingUrl}
+          <BookNowLink className="btn-primary text-center" ctaName="contact_book_now">
+            BOOK NOW
+          </BookNowLink>
+          <AcuityLink
             target="_blank"
             rel="noopener noreferrer"
+            ctaName="contact_open_acuity"
             className="btn-secondary text-center"
           >
             OPEN ACUITY
-          </a>
+          </AcuityLink>
         </div>
       </div>
     </section>

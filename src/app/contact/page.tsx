@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import AcuityLink from "@/components/AcuityLink";
 import { siteConfig, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -55,14 +57,14 @@ export default function ContactPage() {
             can also book directly online.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a
+            <AcuityLink
               className="btn-primary"
-              href={siteConfig.bookingUrl}
               rel="noopener noreferrer"
               target="_blank"
+              ctaName="contact_page_book_online"
             >
               Book Online
-            </a>
+            </AcuityLink>
             <a className="btn-secondary" href={siteConfig.phoneHref}>
               Call or Text
             </a>

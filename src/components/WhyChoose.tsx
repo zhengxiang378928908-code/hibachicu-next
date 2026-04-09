@@ -3,22 +3,22 @@ import Image from "next/image";
 export default function WhyChoose() {
   const reasons = [
     {
-      image: "/images/gallery3.jpg",
+      image: "/images/gallery21.jpg",
       title: "A Feast and Entertainment in One",
       desc: "Live chef performance, fire show, and guest interaction keep the whole table engaged.",
     },
     {
-      image: "/images/gallery4.jpg",
+      image: "/images/gallery17.jpg",
       title: "Restaurant Experience at Home",
       desc: "Skip reservations and travel. Enjoy a private hibachi experience in your own space.",
     },
     {
-      image: "/images/gallery5.jpg",
+      image: "/images/gallery14.jpg",
       title: "Cooked Fresh for Your Group",
       desc: "Choose from chicken, steak, shrimp, salmon, lobster, and vegetarian options, all cooked to order.",
     },
     {
-      image: "/images/gallery6.jpg",
+      image: "/images/gallery12.jpg",
       title: "We Handle Setup and Cleanup",
       desc: "We bring the setup, cook on-site, and handle cleanup so you can enjoy the event.",
     },
