@@ -1,7 +1,8 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-import { legacyMenuPathMap } from "@/lib/menu-states";
+import { legacyMenuCityPathMap } from "@/lib/menu-cities";
+import { legacyMenuPathMap, menuStates } from "@/lib/menu-states";
 import { siteConfig } from "@/lib/site";
 
 const canonicalUrl = new URL(siteConfig.siteUrl);
@@ -9,6 +10,7 @@ const canonicalHostname = canonicalUrl.hostname.toLowerCase();
 const alternateHostname = canonicalHostname.startsWith("www.")
   ? canonicalHostname.replace(/^www\./, "")
   : `www.${canonicalHostname}`;
+const currentMenuStatePaths = new Set(menuStates.map((state) => `/menu/${state.slug}`));
 
 function normalizePathname(pathname: string) {
   if (pathname === "/") {
@@ -30,6 +32,23 @@ function getRequestHostname(request: NextRequest) {
     .toLowerCase();
 }
 
+function isDeprecatedMenuPath(pathname: string) {
+  if (legacyMenuPathMap.has(pathname) || legacyMenuCityPathMap.has(pathname)) {
+    return false;
+  }
+
+  if (/^\/menu\/[^/]+$/.test(pathname)) {
+    if (currentMenuStatePaths.has(pathname)) {
+      return false;
+    }
+
+    const legacySlug = pathname.slice("/menu/".length);
+    return legacySlug.includes("-");
+  }
+
+  return /^\/[^/]+-hibachi-menu$/.test(pathname);
+}
+
 export function proxy(request: NextRequest) {
   const pathname = normalizePathname(request.nextUrl.pathname);
   const requestHostname = getRequestHostname(request);
@@ -41,7 +60,8 @@ export function proxy(request: NextRequest) {
   const redirectUrl = request.nextUrl.clone();
   let shouldRedirect = false;
 
-  const legacyDestination = legacyMenuPathMap.get(pathname);
+  const legacyDestination =
+    legacyMenuPathMap.get(pathname) ?? legacyMenuCityPathMap.get(pathname);
   if (legacyDestination) {
     redirectUrl.pathname = legacyDestination;
     shouldRedirect = true;
@@ -56,6 +76,16 @@ export function proxy(request: NextRequest) {
 
   if (shouldRedirect) {
     return NextResponse.redirect(redirectUrl, 301);
+  }
+
+  if (isDeprecatedMenuPath(pathname)) {
+    return new NextResponse("Gone", {
+      status: 410,
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "X-Robots-Tag": "noindex, nofollow",
+      },
+    });
   }
 
   return NextResponse.next();

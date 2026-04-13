@@ -129,6 +129,28 @@ export const menuCities = menuStates.flatMap((state) =>
   state.serviceAreas.map((area) => buildMenuCity(state, area))
 );
 
+const citySlugCounts = menuCities.reduce<Record<string, number>>((counts, city) => {
+  counts[city.citySlug] = (counts[city.citySlug] ?? 0) + 1;
+  return counts;
+}, {});
+
+export const legacyMenuCityPathMap = new Map(
+  menuCities.flatMap((city) => {
+    const aliases = new Set<string>([`/menu/${city.stateSlug}-${city.citySlug}`]);
+
+    // Some older programmatic location pages used a single market slug under /menu.
+    if (citySlugCounts[city.citySlug] === 1) {
+      aliases.add(`/menu/${city.citySlug}`);
+    }
+
+    if (city.stateSlug === "washington-dc") {
+      aliases.add(`/menu/dc-${city.citySlug}`);
+    }
+
+    return [...aliases].map((alias) => [alias, city.path] as const);
+  })
+);
+
 export function getMenuCity(stateSlug: string, citySlug: string) {
   return menuCities.find(
     (city) => city.stateSlug === stateSlug && city.citySlug === citySlug
