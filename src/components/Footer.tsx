@@ -82,8 +82,14 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-[#574843]/50">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center text-[#ddc1b0]/40 text-xs">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-3 md:flex-row md:justify-between md:items-center text-[#ddc1b0]/40 text-xs">
           <p>&copy; {new Date().getFullYear()} Hibachi CU. All rights reserved.</p>
+          <Link
+            href="/privacy-policy"
+            className="transition-colors hover:text-[#ffb786]"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </footer>

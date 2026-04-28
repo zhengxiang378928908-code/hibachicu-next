@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import BookingCompletionTracker from "@/components/BookingCompletionTracker";
+import BookingConfirmedDetails from "@/components/BookingConfirmedDetails";
 import { absoluteUrl, siteConfig } from "@/lib/site";
-
-type BookingConfirmedPageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-};
 
 export const metadata: Metadata = {
   title: "Booking Confirmed | Hibachi CU",
@@ -25,37 +21,9 @@ export const metadata: Metadata = {
   },
 };
 
-function getParam(
-  params: Record<string, string | string[] | undefined>,
-  key: string,
-) {
-  const value = params[key];
-
-  if (Array.isArray(value)) {
-    return value[0] ?? "";
-  }
-
-  return value ?? "";
-}
-
-export default async function BookingConfirmedPage({
-  searchParams,
-}: BookingConfirmedPageProps) {
-  const resolvedSearchParams = await searchParams;
-  const payload = {
-    appointmentId: getParam(resolvedSearchParams, "appointmentId"),
-    value: getParam(resolvedSearchParams, "value"),
-    currency: getParam(resolvedSearchParams, "currency") || "USD",
-    appointmentType: getParam(resolvedSearchParams, "appointmentType"),
-    calendar: getParam(resolvedSearchParams, "calendar"),
-    clientDate: getParam(resolvedSearchParams, "clientDate"),
-    clientTime: getParam(resolvedSearchParams, "clientTime"),
-  };
-
+export default function BookingConfirmedPage() {
   return (
     <main className="px-6 py-24">
-      <BookingCompletionTracker payload={payload} />
-
       <section
         className="mx-auto max-w-3xl rounded-3xl p-8 text-center md:p-12"
         style={{ background: "var(--color-surface-container-low)" }}
@@ -72,31 +40,7 @@ export default async function BookingConfirmedPage({
           travel, or setup details before the event.
         </p>
 
-        <div className="mt-10 grid gap-4 text-left md:grid-cols-2">
-          <div
-            className="rounded-2xl px-5 py-4"
-            style={{ background: "var(--color-surface-container)" }}
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#ffb786]">
-              Appointment
-            </p>
-            <p className="mt-3 text-lg font-semibold">
-              {payload.appointmentType || "Private Hibachi Experience"}
-            </p>
-          </div>
-
-          <div
-            className="rounded-2xl px-5 py-4"
-            style={{ background: "var(--color-surface-container)" }}
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#ffb786]">
-              Scheduled For
-            </p>
-            <p className="mt-3 text-lg font-semibold">
-              {[payload.clientDate, payload.clientTime].filter(Boolean).join(" · ") || "Check your confirmation email"}
-            </p>
-          </div>
-        </div>
+        <BookingConfirmedDetails />
 
         <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
           <a className="btn-primary text-center" href={siteConfig.phoneHref}>

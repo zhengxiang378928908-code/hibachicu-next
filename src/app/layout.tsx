@@ -8,6 +8,7 @@ import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const GA_ID = "G-J9P2GCK3DZ";
+const GOOGLE_ADS_ID = "AW-17950319573";
 const CLARITY_ID = "w5bc9lmnyl";
 
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
@@ -76,6 +77,7 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GA_ID}');
+            gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
         <Script id="microsoft-clarity" strategy="afterInteractive">

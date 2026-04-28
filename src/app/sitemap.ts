@@ -5,6 +5,8 @@ import { menuCities } from "@/lib/menu-cities";
 import { menuStates } from "@/lib/menu-states";
 import { absoluteUrl } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     "/",

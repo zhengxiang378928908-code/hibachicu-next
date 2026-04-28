@@ -7,6 +7,7 @@ import AcuityLink from "@/components/AcuityLink";
 import BookNowLink from "@/components/BookNowLink";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import PromotionalOffer from "@/components/PromotionalOffer";
 import { getMenuCity, getMenuCitiesForState, menuCities } from "@/lib/menu-cities";
 import { siteConfig } from "@/lib/site";
 import { cityMenuStructuredData } from "@/lib/structured-data";
@@ -112,6 +113,7 @@ export default async function CityMenuPage({ params }: CityMenuPageProps) {
                 <span className="mb-6 inline-block rounded-full bg-[#29344e] px-4 py-1 text-xs font-bold tracking-widest text-[#ffb786]">
                   {city.cityName.toUpperCase()} HIBACHI
                 </span>
+                <PromotionalOffer ctaName="city_page_group_offer" className="mb-7" />
                 <h1 className="mb-6 text-5xl font-bold md:text-6xl">
                   {city.cityName} <span className="italic text-[#ffb786]">Hibachi Catering</span>
                 </h1>

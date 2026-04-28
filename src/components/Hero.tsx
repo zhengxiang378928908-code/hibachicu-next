@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import BookNowLink from "@/components/BookNowLink";
+import PromotionalOffer from "@/components/PromotionalOffer";
 
 export default function Hero() {
   return (
@@ -29,6 +30,8 @@ export default function Hero() {
           <span className="inline-block py-1.5 px-5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[#ffb786] text-xs md:text-sm font-bold tracking-widest mb-8 shadow-lg">
             🔥 THE ULTIMATE PRIVATE HIBACHI EXPERIENCE
           </span>
+
+          <PromotionalOffer ctaName="hero_group_offer" className="mb-7" />
 
           <h1 className="text-6xl md:text-[5.5rem] font-bold leading-[1.1] mb-6 drop-shadow-2xl">
             Mobile Hibachi{" "}

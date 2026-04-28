@@ -1,5 +1,6 @@
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hibachicu.com").replace(/\/$/, "");
-const directReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL?.trim() ?? "";
+const configuredReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL?.trim() ?? "";
+const directReviewUrl = configuredReviewUrl || "https://g.page/r/Cd0Rn872OgrqEAE/review";
 const reviewSearchUrl = `https://www.google.com/search?q=${encodeURIComponent("Hibachi CU reviews")}`;
 
 export const siteConfig = {

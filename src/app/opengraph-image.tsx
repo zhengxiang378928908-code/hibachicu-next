@@ -6,6 +6,7 @@ import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/site";
 
 export const runtime = "nodejs";
+export const dynamic = "force-static";
 export const alt = `${siteConfig.name} mobile hibachi catering`;
 export const size = {
   width: 1200,

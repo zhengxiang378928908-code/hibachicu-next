@@ -4,7 +4,8 @@ This project is deployed to a Google Cloud VM and served by `systemd` + `nginx`.
 
 ## Production server
 
-- Host: `136.114.146.128`
+- Instance: `instance-20260317-20260423-010138`
+- Host: `34.94.159.175`
 - SSH transport: Google Cloud IAP tunnel
 - App directory: `/home/Apple/hibachicu-next`
 - App service: `hibachicu-next.service`
@@ -92,37 +93,60 @@ git push origin main
 3. Create a remote backup before replacing files:
 
 ```bash
-ssh 136.114.146.128 'cp -a /home/Apple/hibachicu-next /home/Apple/hibachicu-next-backup-$(date +%Y%m%d-%H%M%S)'
+gcloud compute ssh instance-20260317-20260423-010138 \
+  --zone=us-west2-c \
+  --tunnel-through-iap \
+  --command 'cp -a /home/Apple/hibachicu-next /home/Apple/hibachicu-next-backup-$(date +%Y%m%d-%H%M%S)'
 ```
 
 4. Sync the project to the VM.
-   Exclude local-only files, build output, git metadata, and temporary artifacts:
+   Exclude local-only files, build output, git metadata, and temporary artifacts.
+   Direct SSH to the VM may be blocked, so the stable path is: package locally -> upload to GCS -> fetch on the VM:
 
 ```bash
-rsync -avz --delete \
-  --exclude '.git' \
-  --exclude '.next' \
-  --exclude 'node_modules' \
-  --exclude '.tmp*' \
-  --exclude 'CLAUDE.md' \
-  --exclude 'Figma' \
-  --exclude 'public/images/menu-*-card*.jpg' \
-  --exclude 'public/images/menu-*-new*.jpg' \
-  -e ssh \
-  /Users/Apple/Desktop/hibachicu-next/ \
-  136.114.146.128:/home/Apple/hibachicu-next/
+COPYFILE_DISABLE=1 \
+tar -czf /tmp/hibachicu-next-deploy.tar.gz \
+  --exclude='.git' \
+  --exclude='.next' \
+  --exclude='node_modules' \
+  --exclude='.tmp*' \
+  --exclude='CLAUDE.md' \
+  --exclude='Figma' \
+  --exclude='public/images/menu-*-card*.jpg' \
+  --exclude='public/images/menu-*-new*.jpg' \
+  -C /Users/Apple/Desktop hibachicu-next
+
+gcloud storage cp /tmp/hibachicu-next-deploy.tar.gz \
+  gs://hibachicu-deploy-project-d9b2fe87-2d16-44b5-bb4/releases/hibachicu-next-manual-deploy.tar.gz
+
+gcloud compute ssh instance-20260317-20260423-010138 \
+  --zone=us-west2-c \
+  --tunnel-through-iap \
+  --command '
+    rm -rf /tmp/hibachicu-next-deploy &&
+    mkdir -p /tmp/hibachicu-next-deploy &&
+    gcloud storage cp gs://hibachicu-deploy-project-d9b2fe87-2d16-44b5-bb4/releases/hibachicu-next-manual-deploy.tar.gz /tmp/hibachicu-next-deploy/release.tar.gz &&
+    tar -xzf /tmp/hibachicu-next-deploy/release.tar.gz -C /tmp/hibachicu-next-deploy &&
+    rsync -av --delete /tmp/hibachicu-next-deploy/hibachicu-next/ /home/Apple/hibachicu-next/
+  '
 ```
 
 5. Install dependencies and build on the server:
 
 ```bash
-ssh 136.114.146.128 'su - Apple -c "cd /home/Apple/hibachicu-next && npm install && npm run build"'
+gcloud compute ssh instance-20260317-20260423-010138 \
+  --zone=us-west2-c \
+  --tunnel-through-iap \
+  --command 'su - Apple -c "cd /home/Apple/hibachicu-next && npm install && npm run build"'
 ```
 
 6. Restart the service:
 
 ```bash
-ssh 136.114.146.128 'systemctl restart hibachicu-next.service && systemctl status hibachicu-next.service --no-pager'
+gcloud compute ssh instance-20260317-20260423-010138 \
+  --zone=us-west2-c \
+  --tunnel-through-iap \
+  --command 'systemctl restart hibachicu-next.service && systemctl status hibachicu-next.service --no-pager'
 ```
 
 7. Verify production:
@@ -138,19 +162,28 @@ curl -I https://www.hibachicu.com/menu/connecticut/stamford
 Check service logs:
 
 ```bash
-ssh 136.114.146.128 'journalctl -u hibachicu-next.service -n 200 --no-pager'
+gcloud compute ssh instance-20260317-20260423-010138 \
+  --zone=us-west2-c \
+  --tunnel-through-iap \
+  --command 'journalctl -u hibachicu-next.service -n 200 --no-pager'
 ```
 
 Check service file:
 
 ```bash
-ssh 136.114.146.128 'systemctl cat hibachicu-next.service'
+gcloud compute ssh instance-20260317-20260423-010138 \
+  --zone=us-west2-c \
+  --tunnel-through-iap \
+  --command 'systemctl cat hibachicu-next.service'
 ```
 
 Reload `systemd` after editing the unit file:
 
 ```bash
-ssh 136.114.146.128 'systemctl daemon-reload && systemctl restart hibachicu-next.service'
+gcloud compute ssh instance-20260317-20260423-010138 \
+  --zone=us-west2-c \
+  --tunnel-through-iap \
+  --command 'systemctl daemon-reload && systemctl restart hibachicu-next.service'
 ```
 
 ## Rollback
@@ -158,12 +191,15 @@ ssh 136.114.146.128 'systemctl daemon-reload && systemctl restart hibachicu-next
 If a deploy fails and you need to restore a backup:
 
 ```bash
-ssh 136.114.146.128 '
-  systemctl stop hibachicu-next.service &&
-  rm -rf /home/Apple/hibachicu-next &&
-  cp -a /home/Apple/hibachicu-next-backup-YYYYMMDD-HHMMSS /home/Apple/hibachicu-next &&
-  systemctl start hibachicu-next.service
-'
+gcloud compute ssh instance-20260317-20260423-010138 \
+  --zone=us-west2-c \
+  --tunnel-through-iap \
+  --command '
+    systemctl stop hibachicu-next.service &&
+    rm -rf /home/Apple/hibachicu-next &&
+    cp -a /home/Apple/hibachicu-next-backup-YYYYMMDD-HHMMSS /home/Apple/hibachicu-next &&
+    systemctl start hibachicu-next.service
+  '
 ```
 
 Replace `YYYYMMDD-HHMMSS` with the backup timestamp you want to restore.

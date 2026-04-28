@@ -4,6 +4,7 @@ import AcuityLink from "@/components/AcuityLink";
 import BookNowLink from "@/components/BookNowLink";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PromotionalOffer from "@/components/PromotionalOffer";
 import Link from "next/link";
 import { getMenuCitiesForState } from "@/lib/menu-cities";
 import { menuStates } from "@/lib/menu-states";
@@ -59,6 +60,11 @@ export default function MenuPage() {
             <span className="inline-block py-1 px-4 rounded-full bg-[#29344e] text-[#ffb786] text-xs font-bold tracking-widest mb-6">
               MENUS & PRICING
             </span>
+            <PromotionalOffer
+              ctaName="menu_page_group_offer"
+              align="center"
+              className="mb-7"
+            />
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Hibachi Menus &{" "}
               <span className="text-[#ffb786] italic">Pricing by State</span>
