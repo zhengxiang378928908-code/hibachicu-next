@@ -1,0 +1,143 @@
+# Cloudflare Pages redirects.
+# Keep static redirects here because Next proxy/redirects do not run after static export.
+
+/locations https://g.page/r/Cd0Rn872OgrqEAE/review 301
+/reviews https://g.page/r/Cd0Rn872OgrqEAE/review 301
+/hibachi-at-home-in-maryland /menu/maryland 301
+/privacy /privacy-policy 301
+/menus /menu 301
+/location /menu 301
+/locations-and-menu /menu 301
+/booking /#booking 301
+/book /#booking 301
+/book-now /#booking 301
+
+/connecticut-hibachi-menu /menu/connecticut 301
+/dc-hibachi-menu /menu/washington-dc 301
+/delaware-hibachi-menu /menu/delaware 301
+/long-island-hibachi-menu /menu/new-york 301
+/maryland-hibachi-menu /menu/maryland 301
+/massachusetts-hibachi-menu /menu/massachusetts 301
+/new-hampshire-hibachi-menu /menu/new-hampshire 301
+/new-jersey-hibachi-menu /menu/new-jersey 301
+/new-york-hibachi-menu /menu/new-york 301
+/nyc-hibachi-menu /menu/new-york 301
+/pennsylvania-hibachi-menu /menu/pennsylvania 301
+/rhode-island-hibachi-menu /menu/rhode-island 301
+/vermont-hibachi-menu /menu/vermont 301
+/washington-dc-hibachi-menu /menu/washington-dc 301
+
+/menu/connecticut-hibachi-menu /menu/connecticut 301
+/menu/massachusetts-hibachi-menu /menu/massachusetts 301
+/menu/rhode-island-hibachi-menu /menu/rhode-island 301
+/menu/vermont-hibachi-menu /menu/vermont 301
+/menu/new-hampshire-hibachi-menu /menu/new-hampshire 301
+/menu/new-york-hibachi-menu /menu/new-york 301
+/menu/new-jersey-hibachi-menu /menu/new-jersey 301
+/menu/pennsylvania-hibachi-menu /menu/pennsylvania 301
+/menu/delaware-hibachi-menu /menu/delaware 301
+/menu/maryland-hibachi-menu /menu/maryland 301
+/menu/washington-dc-hibachi-menu /menu/washington-dc 301
+
+/menu/connecticut-stamford /menu/connecticut/stamford 301
+/menu/connecticut-greenwich /menu/connecticut/greenwich 301
+/menu/connecticut-new-haven /menu/connecticut/new-haven 301
+/menu/connecticut-hartford /menu/connecticut/hartford 301
+/menu/stamford /menu/connecticut/stamford 301
+/menu/greenwich /menu/connecticut/greenwich 301
+/menu/new-haven /menu/connecticut/new-haven 301
+/menu/hartford /menu/connecticut/hartford 301
+
+/menu/massachusetts-boston /menu/massachusetts/boston 301
+/menu/massachusetts-cambridge /menu/massachusetts/cambridge 301
+/menu/massachusetts-worcester /menu/massachusetts/worcester 301
+/menu/massachusetts-cape-cod /menu/massachusetts/cape-cod 301
+/menu/boston /menu/massachusetts/boston 301
+/menu/cambridge /menu/massachusetts/cambridge 301
+/menu/worcester /menu/massachusetts/worcester 301
+/menu/cape-cod /menu/massachusetts/cape-cod 301
+
+/menu/rhode-island-providence /menu/rhode-island/providence 301
+/menu/rhode-island-newport /menu/rhode-island/newport 301
+/menu/rhode-island-warwick /menu/rhode-island/warwick 301
+/menu/rhode-island-narragansett /menu/rhode-island/narragansett 301
+/menu/providence /menu/rhode-island/providence 301
+/menu/newport /menu/rhode-island/newport 301
+/menu/warwick /menu/rhode-island/warwick 301
+/menu/narragansett /menu/rhode-island/narragansett 301
+
+/menu/vermont-burlington /menu/vermont/burlington 301
+/menu/vermont-stowe /menu/vermont/stowe 301
+/menu/vermont-killington /menu/vermont/killington 301
+/menu/vermont-montpelier /menu/vermont/montpelier 301
+/menu/burlington /menu/vermont/burlington 301
+/menu/stowe /menu/vermont/stowe 301
+/menu/killington /menu/vermont/killington 301
+/menu/montpelier /menu/vermont/montpelier 301
+
+/menu/new-hampshire-manchester /menu/new-hampshire/manchester 301
+/menu/new-hampshire-portsmouth /menu/new-hampshire/portsmouth 301
+/menu/new-hampshire-nashua /menu/new-hampshire/nashua 301
+/menu/new-hampshire-lake-winnipesaukee /menu/new-hampshire/lake-winnipesaukee 301
+/menu/manchester /menu/new-hampshire/manchester 301
+/menu/portsmouth /menu/new-hampshire/portsmouth 301
+/menu/nashua /menu/new-hampshire/nashua 301
+/menu/lake-winnipesaukee /menu/new-hampshire/lake-winnipesaukee 301
+
+/menu/new-york-new-york-city /menu/new-york/new-york-city 301
+/menu/new-york-long-island /menu/new-york/long-island 301
+/menu/new-york-westchester /menu/new-york/westchester 301
+/menu/new-york-hudson-valley /menu/new-york/hudson-valley 301
+/menu/new-york-city /menu/new-york/new-york-city 301
+/menu/long-island /menu/new-york/long-island 301
+/menu/westchester /menu/new-york/westchester 301
+/menu/hudson-valley /menu/new-york/hudson-valley 301
+
+/menu/new-jersey-jersey-city /menu/new-jersey/jersey-city 301
+/menu/new-jersey-hoboken /menu/new-jersey/hoboken 301
+/menu/new-jersey-princeton /menu/new-jersey/princeton 301
+/menu/new-jersey-monmouth-county /menu/new-jersey/monmouth-county 301
+/menu/jersey-city /menu/new-jersey/jersey-city 301
+/menu/hoboken /menu/new-jersey/hoboken 301
+/menu/princeton /menu/new-jersey/princeton 301
+/menu/monmouth-county /menu/new-jersey/monmouth-county 301
+
+/menu/pennsylvania-philadelphia /menu/pennsylvania/philadelphia 301
+/menu/pennsylvania-pittsburgh /menu/pennsylvania/pittsburgh 301
+/menu/pennsylvania-poconos /menu/pennsylvania/poconos 301
+/menu/pennsylvania-main-line /menu/pennsylvania/main-line 301
+/menu/philadelphia /menu/pennsylvania/philadelphia 301
+/menu/pittsburgh /menu/pennsylvania/pittsburgh 301
+/menu/poconos /menu/pennsylvania/poconos 301
+/menu/main-line /menu/pennsylvania/main-line 301
+
+/menu/delaware-wilmington /menu/delaware/wilmington 301
+/menu/delaware-newark /menu/delaware/newark 301
+/menu/delaware-rehoboth-beach /menu/delaware/rehoboth-beach 301
+/menu/delaware-lewes /menu/delaware/lewes 301
+/menu/wilmington /menu/delaware/wilmington 301
+/menu/newark /menu/delaware/newark 301
+/menu/rehoboth-beach /menu/delaware/rehoboth-beach 301
+/menu/lewes /menu/delaware/lewes 301
+
+/menu/maryland-baltimore /menu/maryland/baltimore 301
+/menu/maryland-bethesda /menu/maryland/bethesda 301
+/menu/maryland-annapolis /menu/maryland/annapolis 301
+/menu/maryland-ocean-city /menu/maryland/ocean-city 301
+/menu/baltimore /menu/maryland/baltimore 301
+/menu/bethesda /menu/maryland/bethesda 301
+/menu/annapolis /menu/maryland/annapolis 301
+/menu/ocean-city /menu/maryland/ocean-city 301
+
+/menu/washington-dc-georgetown /menu/washington-dc/georgetown 301
+/menu/washington-dc-dupont-circle /menu/washington-dc/dupont-circle 301
+/menu/washington-dc-capitol-hill /menu/washington-dc/capitol-hill 301
+/menu/washington-dc-northwest-dc /menu/washington-dc/northwest-dc 301
+/menu/dc-georgetown /menu/washington-dc/georgetown 301
+/menu/dc-dupont-circle /menu/washington-dc/dupont-circle 301
+/menu/dc-capitol-hill /menu/washington-dc/capitol-hill 301
+/menu/dc-northwest-dc /menu/washington-dc/northwest-dc 301
+/menu/georgetown /menu/washington-dc/georgetown 301
+/menu/dupont-circle /menu/washington-dc/dupont-circle 301
+/menu/capitol-hill /menu/washington-dc/capitol-hill 301
+/menu/northwest-dc /menu/washington-dc/northwest-dc 301
